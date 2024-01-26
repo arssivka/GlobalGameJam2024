@@ -1,18 +1,27 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy7dcihmxkksa"]
+[gd_scene load_steps=5 format=3 uid="uid://dy7dcihmxkksa"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pae2i"]
-size = Vector3(1, 2, 1)
+[ext_resource type="PackedScene" uid="uid://yurluqjkqmdj" path="res://Characters/PlayerHero/Meshes/Hero_Idle/Hero_Idle.glb" id="1_kdcs5"]
+[ext_resource type="PackedScene" uid="uid://cidjk3junmhxv" path="res://Characters/PlayerHero/Meshes/Hero_Run/Hero_Run.glb" id="2_haw1t"]
+[ext_resource type="PackedScene" uid="uid://c1igoj0m24yhx" path="res://Characters/PlayerHero/Meshes/Hero_Tickle/Hero_Tickle.glb" id="3_wfkt7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_e2jud"]
-size = Vector3(1, 2, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8uwi"]
+height = 3.04283
 
 [node name="HeroRoot" type="CharacterBody3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Collision" type="CollisionShape3D" parent="Pivot"]
-shape = SubResource("BoxShape3D_pae2i")
+[node name="Hero_Idle" parent="Pivot" instance=ExtResource("1_kdcs5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11474, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
-mesh = SubResource("BoxMesh_e2jud")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot"]
+transform = Transform3D(1.84249, 0, 0, 0, 0.804292, 0, 0, 0, 1.82322, 0, 1.2316, 0)
+shape = SubResource("CapsuleShape3D_n8uwi")
+
+[node name="Hero_Run" parent="Pivot" instance=ExtResource("2_haw1t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+visible = false
+
+[node name="Hero_Tickle" parent="Pivot" instance=ExtResource("3_wfkt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0)
+visible = false
