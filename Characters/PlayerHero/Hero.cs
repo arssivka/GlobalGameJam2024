@@ -73,10 +73,7 @@ public partial class Hero : CharacterBody3D
 	{
 		ListenInput();
 		Velocity = MoveVelocity * Speed * (float)delta;
-        if (!MoveVelocity.IsZeroApprox())
-        {
-//            GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(Position - MoveVelocity);
-        }
+
 
 		// Leave it to better time
 		/*
@@ -108,5 +105,9 @@ public partial class Hero : CharacterBody3D
 		Velocity = velocity;
 		*/
 		MoveAndSlide();
+		if (!MoveVelocity.IsZeroApprox())
+        {
+            GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(-Velocity);
+        }
 	}
 }
