@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=4 format=3 uid="uid://sj2r8pknotii"]
+
+[ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
 size = Vector3(50, 2, 50)
@@ -19,3 +21,59 @@ mesh = SubResource("BoxMesh_vtuoi")
 
 [node name="Light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 0)
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Wall" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 5.6, -3, 0, -10)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 20, -18, 0, -10)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 11.2, -3, 0, -1)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-4.37114e-08, 0, 16, 0, 4, 0, -1, 0, -6.99382e-07, -18, 0, -10)
+
+[node name="Wall5" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-4.37114e-08, 0, 16, 0, 4, 0, -1, 0, -6.99382e-07, -18, 0, 11)
+
+[node name="Wall6" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-1, 0, -3.35703e-07, 0, 4, 0, 8.74228e-08, 0, -3.84, 3, 0, 10.2)
+
+[node name="Wall7" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-1, 0, -1.74846e-06, 0, 4, 0, 8.74228e-08, 0, -20, 18, 0, 10.2)
+
+[node name="Wall8" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-1, 0, -1.17496e-06, 0, 4, 0, 8.74228e-08, 0, -13.44, 3, 0, 3.2)
+
+[node name="Wall9" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1.31134e-07, 0, -16, 0, 4, 0, 1, 0, 2.09815e-06, 18, 0, 10.2)
+
+[node name="Wall10" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1.31134e-07, 0, -16, 0, 4, 0, 1, 0, 2.09815e-06, 18, 0, -10.8)
+
+[node name="Wall11" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 11.2, -3, 0, 11)
+
+[node name="Wall12" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 11.2, 2, 0, 11)
+
+[node name="Wall13" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 6.72, 2, 0, -17)
+
+[node name="Wall14" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 10.08, -3, 0, -25)
+
+[node name="Wall15" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-4.37114e-08, 0, 22.176, 0, 4, 0, -1, 0, -9.69344e-07, -25.1321, 0, -24)
+
+[node name="Wall16" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 15.5232, -25, 0, -25)
+
+[node name="Wall17" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-4.37114e-08, 0, 6.4, 0, 4, 0, -1, 0, -2.79753e-07, -24, 0, -10)
+
+[node name="Wall18" parent="Walls" instance=ExtResource("1_mdhab")]
+transform = Transform3D(-4.37114e-08, 0, -5.1744, 0, 4, 0, 1, 0, -2.2618e-07, 3, 0, -18)
