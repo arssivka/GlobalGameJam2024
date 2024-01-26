@@ -14,14 +14,14 @@ public partial class Hero : CharacterBody3D
 	private NodePath TickleMeshPath = new NodePath("Pivot/Hero_Tickle");
 	private NodePath CameraPath = new NodePath("CameraPivot/Camera");
 
-    public override void _Ready()
-    {
-        base._Ready();
-    }
+	public override void _Ready()
+	{
+		base._Ready();
+	}
 
-    public override void _Process(double delta)
-    {
-        base._Process(delta);
+	public override void _Process(double delta)
+	{
+		base._Process(delta);
 		GetNode<Node3D>(TickleMeshPath).Hide();
 		if (MoveVelocity.IsZeroApprox())
 		{
@@ -33,7 +33,7 @@ public partial class Hero : CharacterBody3D
 			GetNode<Node3D>(IdleMeshPath).Hide();
 			GetNode<Node3D>(RunMeshPath).Show();
 		}
-    }
+	}
 
 	private void ListenInput()
 	{
@@ -66,14 +66,13 @@ public partial class Hero : CharacterBody3D
 	}
 
 
-    // Get the gravity from the project settings to be synced with RigidBody nodes.
-    public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
+	// Get the gravity from the project settings to be synced with RigidBody nodes.
+	public float gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 
 	public override void _PhysicsProcess(double delta)
 	{
 		ListenInput();
 		Velocity = MoveVelocity * Speed * (float)delta;
-
 
 		// Leave it to better time
 		/*
