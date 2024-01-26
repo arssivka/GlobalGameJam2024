@@ -1,5 +1,18 @@
-[gd_scene format=3 uid="uid://dy7dcihmxkksa"]
+[gd_scene load_steps=3 format=3 uid="uid://dy7dcihmxkksa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pae2i"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2jud"]
+size = Vector3(1, 2, 1)
 
 [node name="HeroRoot" type="CharacterBody3D"]
 
 [node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Collision" type="CollisionShape3D" parent="Pivot"]
+shape = SubResource("BoxShape3D_pae2i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+mesh = SubResource("BoxMesh_e2jud")
