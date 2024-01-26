@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=4 format=3 uid="uid://sj2r8pknotii"]
+
+[ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="1_3hnc6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
 size = Vector3(50, 2, 50)
@@ -19,3 +21,5 @@ mesh = SubResource("BoxMesh_vtuoi")
 
 [node name="Light" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 0)
+
+[node name="HeroRoot" parent="." instance=ExtResource("1_3hnc6")]
