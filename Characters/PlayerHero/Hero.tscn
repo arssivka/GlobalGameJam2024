@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dy7dcihmxkksa"]
+
+[node name="HeroRoot" type="CharacterBody3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
