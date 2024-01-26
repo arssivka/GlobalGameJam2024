@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=6 format=3 uid="uid://sj2r8pknotii"]
 
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
+[ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="2_5coqe"]
+[ext_resource type="PackedScene" uid="uid://dl4g1iqwp5qu7" path="res://Characters/EnemyHero/Enemy.tscn" id="3_yjj8y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
 size = Vector3(50, 2, 50)
@@ -77,3 +79,9 @@ transform = Transform3D(-4.37114e-08, 0, 6.4, 0, 4, 0, -1, 0, -2.79753e-07, -24,
 
 [node name="Wall18" parent="Walls" instance=ExtResource("1_mdhab")]
 transform = Transform3D(-4.37114e-08, 0, -5.1744, 0, 4, 0, 1, 0, -2.2618e-07, 3, 0, -18)
+
+[node name="HeroRoot" parent="." instance=ExtResource("2_5coqe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2035, 0, 16.3885)
+
+[node name="Enemy" parent="." instance=ExtResource("3_yjj8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19265, 0, 13.9272)
