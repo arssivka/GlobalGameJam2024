@@ -75,6 +75,13 @@ public partial class Enemy : CharacterBody3D
 		{
 			_targetVelocity.Y -= FallAcceleration * (float)delta;
 		}
+	
+		Vector3 direction = -_targetVelocity;
+		direction.Y = 0;
+		if (!direction.IsZeroApprox())
+		{
+			GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
+		}
 		Velocity = _targetVelocity;
 		MoveAndSlide();
 	}
