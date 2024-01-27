@@ -208,6 +208,7 @@ public partial class Hero : CharacterBody3D
 	
 	private void OnHitAreaBodyEntered(Node3D body)
 	{
+		GetTree().ChangeSceneToFile("res://UI/GameOver.tscn");
 	}
 	
 	private void OnHitAreaBodyExited(Node3D body)
