@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class ProgressBar : Control
+public partial class ProgressBar : Sprite3D
 {
 	public override void _Ready()
 	{
