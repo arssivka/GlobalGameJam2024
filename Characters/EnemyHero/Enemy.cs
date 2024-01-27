@@ -17,6 +17,7 @@ public partial class Enemy : CharacterBody3D
 	private NodePath _exclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
 
 	private NavigationAgent3D _navigationAgent;
+	private Node3D _playerNode;
 	
 	public Vector3 MovementTarget
 	{
@@ -53,6 +54,11 @@ public partial class Enemy : CharacterBody3D
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
+
+		if (_playerNode is not null && MovementTarget != _playerNode!.Position)
+		{
+			MovementTarget = _playerNode!.Position;
+		}
 
 		if (_navigationAgent.IsNavigationFinished())
 		{
@@ -93,5 +99,15 @@ public partial class Enemy : CharacterBody3D
 
 		// Now that the navigation map is no longer empty, set the movement target.
 		MovementTarget = MovementTargetPosition;
+	}
+	
+	private void OnVisionAreaBodyEntered(Node3D body)
+	{
+		_playerNode = body;
+	}
+	
+	private void OnVisionAreaBodyExited(Node3D body)
+	{
+		_playerNode = null;
 	}
 }
