@@ -20,13 +20,16 @@ public partial class Hero : CharacterBody3D
 	[Export]
 	public const float JumpStartHeight = 0.1f;
 	private float VerticalSpeed = 0.0f;
-
 	private State CurrentState = State.Normal;
 	private Vector3 MoveDirection = new Vector3(0, 0, 0);
 	private NodePath RunMeshPath = new NodePath("Pivot/Hero_Run");
 	private NodePath IdleMeshPath = new NodePath("Pivot/Hero_Idle");
 	private NodePath TickleMeshPath = new NodePath("Pivot/Hero_Tickle");
 	private Node3D Victim = null;
+	private Hud PlayerHud = null;
+
+	private int ScoreCount = 0;
+
 
 	public void StartTickling(Node3D body)
 	{
@@ -40,10 +43,12 @@ public partial class Hero : CharacterBody3D
 		Victim = null;
 	}
 
-	public void OnTicklingSucceed()
+	public void OnTicklingSucceed(int scores)
 	{
 		ChangeState(State.Normal);
 		Victim = null;
+		ScoreCount += scores;
+		PlayerHud.OnScoreCountChanged(ScoreCount);
 	}
 
 	private void ChangeState(State newState)
@@ -140,6 +145,8 @@ public partial class Hero : CharacterBody3D
 	{
 		base._Ready();
 		GetNode<Node3D>(TickleMeshPath).Hide();
+		PlayerHud = GetNode<Hud>("HUD");
+		PlayerHud.OnScoreCountChanged(ScoreCount);
 	}
 
 	public override void _Process(double delta)

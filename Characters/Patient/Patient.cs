@@ -13,8 +13,9 @@ public partial class Patient : StaticBody3D
 	public State CurrentState = State.Idle;
 	[Export]
 	public float TicklingTime = 0.0f;
-	public const float TicklingTimeLimit = 5.0f;
-
+	public const float TicklingTimeLimit = 3.0f;
+	[Export]
+	public int BaseScoreCounnt = 5;
 
 	private Node3D IdleMesh;
 	private Node3D TickledMesh;
@@ -41,7 +42,7 @@ public partial class Patient : StaticBody3D
 			if (TicklingTime >= TicklingTimeLimit)
 			{
 				OnStateSchanged(State.Laugh);
-				TicklingHero.OnTicklingSucceed();
+				TicklingHero.OnTicklingSucceed(BaseScoreCounnt);
 			}
 			else
 			{

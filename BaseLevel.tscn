@@ -45,7 +45,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2035, 0, 16.3885)
 
 [node name="Enemy" parent="." instance=ExtResource("3_yjj8y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93464, 0, 14.9681)
-MovementTargetPosition = Vector3(10, 2.08165e-12, -5)
 
 [node name="Bed" parent="." instance=ExtResource("4_feads")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86492, 0.001, -8.26647)

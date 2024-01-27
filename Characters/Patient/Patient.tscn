@@ -23,7 +23,7 @@ size = Vector3(4, 1, 2)
 size = Vector3(4, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjmj7"]
-size = Vector3(1, 1, 2)
+size = Vector3(0.2, 1, 0.2)
 
 [node name="Patient" type="StaticBody3D"]
 script = ExtResource("1_7gk5t")
@@ -45,7 +45,7 @@ skeleton = NodePath("../MeshBox_Tickled")
 shape = SubResource("BoxShape3D_5tbtc")
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.26609, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89814, 0, 0)
 collision_layer = 0
 collision_mask = 2
 monitorable = false
