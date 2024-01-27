@@ -1,25 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6hun0cyssk3m"]
+[gd_scene load_steps=10 format=3 uid="uid://b6hun0cyssk3m"]
 
 [ext_resource type="Script" path="res://Characters/Patient/Patient.cs" id="1_7gk5t"]
 [ext_resource type="AudioStream" uid="uid://j0te07r8f75t" path="res://Art/Sounds/Laughter_Long.wav" id="2_58e1q"]
+[ext_resource type="PackedScene" uid="uid://bwm363dpss4b6" path="res://Characters/Patient/Bed/Bed.glb" id="2_xy51h"]
 [ext_resource type="AudioStream" uid="uid://b2febferddw62" path="res://Art/Sounds/Laughter_Hysterical.wav" id="3_a0lvf"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ya22m"]
-size = Vector3(4, 1, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ny0ep"]
-albedo_color = Color(1, 1, 0.294118, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_05k3v"]
-material = SubResource("StandardMaterial3D_ny0ep")
-size = Vector3(4, 1, 2)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ouivo"]
-albedo_color = Color(0.619608, 0.0235294, 0.0784314, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_e2y7k"]
-material = SubResource("StandardMaterial3D_ouivo")
-size = Vector3(4, 1, 2)
+[ext_resource type="PackedScene" uid="uid://b1sdlewu778ha" path="res://Characters/Patient/Dude_Laugh/Dude_Laugh.glb" id="3_rel4v"]
+[ext_resource type="PackedScene" uid="uid://s2c3nx22eu3w" path="res://Characters/Patient/Dude_Tickled/Dude_Tickled.glb" id="4_yoot5"]
+[ext_resource type="PackedScene" uid="uid://c6kvhey53ggb1" path="res://Characters/Patient/Dude_Sleep/Dude_Sleep.glb" id="5_fdhk6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5tbtc"]
 size = Vector3(4, 1, 2)
@@ -30,18 +17,20 @@ size = Vector3(0.2, 1, 0.2)
 [node name="Patient" type="StaticBody3D"]
 script = ExtResource("1_7gk5t")
 
+[node name="BedPivot" type="Node3D" parent="."]
+transform = Transform3D(-1, 3.48787e-16, -8.74228e-08, 3.48787e-16, 1, -3.48787e-16, 8.74228e-08, -3.48787e-16, -1, 0, 0, 0)
+
+[node name="Bed" parent="BedPivot" instance=ExtResource("2_xy51h")]
+transform = Transform3D(-4.37114e-08, 3.48787e-16, 1, 3.48787e-16, 1, -3.48787e-16, -1, 3.48787e-16, -4.37114e-08, 0, 0, 0)
+
 [node name="Pivot" type="Node3D" parent="."]
+transform = Transform3D(-1.61181e-07, 1.49479, 0.124916, 3.04987e-08, -0.124916, 1.49479, 1.5, 1.63161e-07, -1.697e-08, -0.368728, 0.880416, 0)
 
-[node name="MeshBox_Idle" type="MeshInstance3D" parent="Pivot"]
-mesh = SubResource("BoxMesh_ya22m")
+[node name="Dude_Laugh" parent="Pivot" instance=ExtResource("3_rel4v")]
 
-[node name="MeshBox_Tickled" type="MeshInstance3D" parent="Pivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00105846, 0)
-mesh = SubResource("BoxMesh_05k3v")
+[node name="Dude_Tickled" parent="Pivot" instance=ExtResource("4_yoot5")]
 
-[node name="MeshBox_Laugh" type="MeshInstance3D" parent="Pivot"]
-mesh = SubResource("BoxMesh_e2y7k")
-skeleton = NodePath("../MeshBox_Tickled")
+[node name="Dude_Sleep" parent="Pivot" instance=ExtResource("5_fdhk6")]
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_5tbtc")
@@ -62,5 +51,15 @@ stream = ExtResource("2_58e1q")
 [node name="HysteriaPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_a0lvf")
 
+[node name="TickledFlipTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="LaughFlipTimer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="body_entered" from="Area3D" to="." method="OnBodyTickingZoneEntered"]
 [connection signal="body_exited" from="Area3D" to="." method="OnBodyTickingZoneLeft"]
+[connection signal="timeout" from="TickledFlipTimer" to="." method="OnTickledFlipTimerTimeout"]
+[connection signal="timeout" from="LaughFlipTimer" to="." method="OnLaughFlipTimerTimeout"]

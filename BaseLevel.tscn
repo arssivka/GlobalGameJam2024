@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
 [ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="2_5coqe"]
 [ext_resource type="PackedScene" uid="uid://dl4g1iqwp5qu7" path="res://Characters/EnemyHero/Enemy.tscn" id="3_yjj8y"]
-[ext_resource type="PackedScene" uid="uid://dhcx82ohjqie2" path="res://Art/LD/Bed/Bed.tscn" id="4_feads"]
 [ext_resource type="PackedScene" uid="uid://b6hun0cyssk3m" path="res://Characters/Patient/Patient.tscn" id="6_2r8it"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
@@ -58,9 +57,6 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 0)
 
 [node name="HeroRoot" parent="." instance=ExtResource("2_5coqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2035, 0, 16.3885)
-
-[node name="Bed" parent="." instance=ExtResource("4_feads")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86492, 0.001, -8.26647)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 2.08165e-12, 2.08165e-12)
