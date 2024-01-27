@@ -78,13 +78,16 @@ public partial class Patient : StaticBody3D
 
 	private void OnBodyTickingZoneEntered(Node3D body)
 	{
+		if (CurrentState == State.Laugh)
+		{
+			return;
+		}
 		TicklingHero = body as Hero;
 		if (TicklingHero != null)
 		{
 			OnStateSchanged(State.Tickled);
 			TicklingHero.StartTickling(this);
 		}
-
 	}
 
 	private void OnBodyTickingZoneLeft(Node3D body)

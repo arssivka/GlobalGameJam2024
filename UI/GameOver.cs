@@ -9,8 +9,9 @@ public partial class GameOver : Control
 	public override void _Ready()
 	{
 		GlobalState = GetNode<GameState>("/root/GameState");
-		ScoreCountLabel = GetNode<Label>("VBoxContainer/HBoxContainer/ScoreCount");
+		ScoreCountLabel = GetNode<Label>("Control/VBoxContainer/HBoxContainer/ScoreCount");
 		ScoreCountLabel.Text = GlobalState.SCORE.ToString();
+		GlobalState.UpdateHighscore();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

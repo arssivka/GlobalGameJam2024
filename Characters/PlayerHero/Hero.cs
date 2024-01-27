@@ -52,7 +52,7 @@ public partial class Hero : CharacterBody3D
 		ChangeState(State.Normal);
 		Victim = null;
 		ScoreCount += scores;
-		GlobalState.SCORE += ScoreCount;
+		GlobalState.SCORE = ScoreCount;
 		PlayerHud.OnScoreCountChanged(ScoreCount);
 	}
 
@@ -166,6 +166,8 @@ public partial class Hero : CharacterBody3D
 		PauseMenu = GetNode<PauseMenu>("PauseMenu");
 		StepsSound = GetNode<AudioStreamPlayer3D>("StepsSound");
 		GlobalState = GetNode<GameState>("/root/GameState");
+		GlobalState.SCORE = 0;
+		ScoreCount = 0;
 	}
 
 	public override void _Process(double delta)
