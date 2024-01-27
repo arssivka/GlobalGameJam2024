@@ -8,8 +8,9 @@ void vertex() {
 
 void fragment() {
 	// Called for every pixel the material is visible on.
-	float remainder = mod(floor(checkSize * UV.x) +
-		floor(checkSize * UV.y), 2.0f);
+	vec4 WorldUV = INV_VIEW_MATRIX * vec4(VERTEX, 1)/vec4(100);
+	float remainder = mod(floor(checkSize * WorldUV.x) +
+		floor(checkSize * WorldUV.z), 2.0f);
 	float col = max(sign(remainder), 0.0f);
 	ALBEDO = vec3(col);
 }
