@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhcx82ohjqie2"]
+[gd_scene load_steps=4 format=3 uid="uid://dhcx82ohjqie2"]
 
+[ext_resource type="Script" path="res://Art/LD/Bed/Bed.cs" id="1_ow5pw"]
 [ext_resource type="PackedScene" uid="uid://c87ihg54dmej7" path="res://Art/LD/Bed/Bed.glb" id="1_pmm0j"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cmjw5"]
+
 [node name="Bed" type="Node3D"]
+script = ExtResource("1_ow5pw")
 
 [node name="Pivot" type="Node3D" parent="."]
 
 [node name="Model" parent="Pivot" instance=ExtResource("1_pmm0j")]
+
+[node name="TickleArea" type="Area3D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TickleArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.01594)
+shape = SubResource("BoxShape3D_cmjw5")
