@@ -174,6 +174,7 @@ public partial class Patient : StaticBody3D
 			case State.Laugh:
 				progressBar.Value = 100;
 				progressBar.Visible = true;
+				progressBar.TintProgress = new Color(0.858824f, 0.0196078f, 0.207843f, 1f);
 				break;
 		}
 	}
