@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6hun0cyssk3m"]
+[gd_scene load_steps=10 format=3 uid="uid://b6hun0cyssk3m"]
 
 [ext_resource type="Script" path="res://Characters/Patient/Patient.cs" id="1_7gk5t"]
 [ext_resource type="AudioStream" uid="uid://j0te07r8f75t" path="res://Art/Sounds/Laughter_Long.wav" id="2_58e1q"]
@@ -7,17 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://b1sdlewu778ha" path="res://Characters/Patient/Dude_Laugh/Dude_Laugh.glb" id="3_rel4v"]
 [ext_resource type="PackedScene" uid="uid://s2c3nx22eu3w" path="res://Characters/Patient/Dude_Tickled/Dude_Tickled.glb" id="4_yoot5"]
 [ext_resource type="PackedScene" uid="uid://c6kvhey53ggb1" path="res://Characters/Patient/Dude_Sleep/Dude_Sleep.glb" id="5_fdhk6"]
-[ext_resource type="Texture2D" uid="uid://bdm7hbfvo5n7c" path="res://Art/UI/energy_bar_bg.png" id="8_8o5gu"]
-[ext_resource type="Texture2D" uid="uid://dpkjo467bj0jk" path="res://Art/UI/energy_bar_fill.png" id="9_n2g6y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5tbtc"]
 size = Vector3(4, 1, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjmj7"]
 size = Vector3(0.2, 1, 0.2)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_x2tdh"]
-viewport_path = NodePath("ProgressBar/SubViewport")
 
 [node name="Patient" type="StaticBody3D"]
 script = ExtResource("1_7gk5t")
@@ -63,25 +58,6 @@ autostart = true
 [node name="LaughFlipTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
-
-[node name="ProgressBar" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70423, 0)
-
-[node name="SubViewport" type="SubViewport" parent="ProgressBar"]
-disable_3d = true
-transparent_bg = true
-size = Vector2i(248, 40)
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
-value = 44.0
-texture_under = ExtResource("8_8o5gu")
-texture_progress = ExtResource("9_n2g6y")
-
-[node name="Sprite3D" type="Sprite3D" parent="ProgressBar"]
-billboard = 1
-texture = SubResource("ViewportTexture_x2tdh")
 
 [connection signal="body_entered" from="Area3D" to="." method="OnBodyTickingZoneEntered"]
 [connection signal="body_exited" from="Area3D" to="." method="OnBodyTickingZoneLeft"]
