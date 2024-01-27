@@ -33,6 +33,7 @@ public partial class Hero : CharacterBody3D
 	private Hud PlayerHud = null;
 	private PauseMenu PauseMenu = null;
 	private int ScoreCount = 0;
+	private GameState GlobalState = null;
 
 	public void StartTickling(Node3D body)
 	{
@@ -51,6 +52,7 @@ public partial class Hero : CharacterBody3D
 		ChangeState(State.Normal);
 		Victim = null;
 		ScoreCount += scores;
+		GlobalState.SCORE += ScoreCount;
 		PlayerHud.OnScoreCountChanged(ScoreCount);
 	}
 
@@ -163,7 +165,7 @@ public partial class Hero : CharacterBody3D
 		PlayerHud.OnScoreCountChanged(ScoreCount);
 		PauseMenu = GetNode<PauseMenu>("PauseMenu");
 		StepsSound = GetNode<AudioStreamPlayer3D>("StepsSound");
-		
+		GlobalState = GetNode<GameState>("/root/GameState");
 	}
 
 	public override void _Process(double delta)
