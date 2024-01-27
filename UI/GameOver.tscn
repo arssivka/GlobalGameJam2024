@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://v4h4u752xhqm"]
 
 [ext_resource type="Script" path="res://UI/GameOver.cs" id="1_ion72"]
-[ext_resource type="Texture2D" uid="uid://rn2m0w38ygdn" path="res://Art/Textures/T_UI_Over.jpg" id="2_oa865"]
+[ext_resource type="Texture2D" uid="uid://bbupimme4yihp" path="res://Art/Textures/T_GameOver.png" id="2_ka26b"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -19,7 +19,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_oa865")
+texture = ExtResource("2_ka26b")
+expand_mode = 5
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
