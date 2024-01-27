@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c87ihg54dmej7"
-path="res://.godot/imported/Bed.glb-6b15148df3d3ced0bacbd05b12d8b053.scn"
+uid="uid://c6kvhey53ggb1"
+path="res://.godot/imported/Dude_Sleep.glb-fde44a064bc5732843d19ee4e8a5e636.scn"
 
 [deps]
 
-source_file="res://Art/LD/Bed/Bed.glb"
-dest_files=["res://.godot/imported/Bed.glb-6b15148df3d3ced0bacbd05b12d8b053.scn"]
+source_file="res://Characters/Patient/Dude_Sleep/Dude_Sleep.glb"
+dest_files=["res://.godot/imported/Dude_Sleep.glb-fde44a064bc5732843d19ee4e8a5e636.scn"]
 
 [params]
 

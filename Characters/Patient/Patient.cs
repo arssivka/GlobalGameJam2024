@@ -23,14 +23,14 @@ public partial class Patient : StaticBody3D
 
 	private AudioStreamPlayer3D HihiPlayer = null;
 	private AudioStreamPlayer3D HysteriaPlayer = null;
-
+	
 	private Hero TicklingHero;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		IdleMesh = GetNode<Node3D>("Pivot/MeshBox_Idle");
-		TickledMesh = GetNode<Node3D>("Pivot/MeshBox_Tickled");
-		LaughMesh = GetNode<Node3D>("Pivot/MeshBox_Laugh");
+		IdleMesh = GetNode<Node3D>("Pivot/Dude_Sleep");
+		TickledMesh = GetNode<Node3D>("Pivot/Dude_Tickled");
+		LaughMesh = GetNode<Node3D>("Pivot/Dude_Laugh");
 		HihiPlayer = GetNode<AudioStreamPlayer3D>("HihiPlayer");
 		HysteriaPlayer = GetNode<AudioStreamPlayer3D>("HysteriaPlayer");
 
@@ -131,4 +131,17 @@ public partial class Patient : StaticBody3D
 		}
 	}
 
+	private void OnTickledFlipTimerTimeout()
+	{
+		var scaleTickled = TickledMesh.Scale;
+		scaleTickled.X = -scaleTickled.X;
+		TickledMesh.Scale = scaleTickled;
+	}
+
+	private void OnLaughFlipTimerTimeout()
+	{
+		var scaleLaugh = LaughMesh.Scale;
+		scaleLaugh.X = -scaleLaugh.X;
+		LaughMesh.Scale = scaleLaugh;
+	}
 }

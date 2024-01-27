@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gh8erh26c1oy"
-path.s3tc="res://.godot/imported/Bed_0.png-a5b7382e1a1bfd9a8c03c70a5aaf244b.s3tc.ctex"
+uid="uid://c275avimwyf30"
+path.s3tc="res://.godot/imported/Dude_Sleep_0.png-9ee4d31c0ee1eb6f7dd107e6c398fdfa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Art/LD/Bed/Bed_0.png"
-dest_files=["res://.godot/imported/Bed_0.png-a5b7382e1a1bfd9a8c03c70a5aaf244b.s3tc.ctex"]
+source_file="res://Characters/Patient/Dude_Sleep/Dude_Sleep_0.png"
+dest_files=["res://.godot/imported/Dude_Sleep_0.png-9ee4d31c0ee1eb6f7dd107e6c398fdfa.s3tc.ctex"]
 
 [params]
 
