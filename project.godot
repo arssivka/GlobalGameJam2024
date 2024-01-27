@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Global Game Jam 2024"
-run/main_scene="res://BaseLevel.tscn"
+run/main_scene="res://UI/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
