@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhcx82ohjqie2"]
+
+[ext_resource type="PackedScene" uid="uid://c87ihg54dmej7" path="res://Art/LD/Bed/Bed.glb" id="1_pmm0j"]
+
+[node name="Bed" type="Node3D"]
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Model" parent="Pivot" instance=ExtResource("1_pmm0j")]

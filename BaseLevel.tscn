@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=7 format=3 uid="uid://sj2r8pknotii"]
 
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
 [ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="2_5coqe"]
 [ext_resource type="PackedScene" uid="uid://dl4g1iqwp5qu7" path="res://Characters/EnemyHero/Enemy.tscn" id="3_yjj8y"]
+[ext_resource type="PackedScene" uid="uid://dhcx82ohjqie2" path="res://Art/LD/Bed/Bed.tscn" id="4_feads"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
 size = Vector3(50, 2, 50)
@@ -85,3 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2035, 0, 16.3885)
 
 [node name="Enemy" parent="." instance=ExtResource("3_yjj8y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19265, 0, 13.9272)
+
+[node name="Bed" parent="." instance=ExtResource("4_feads")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86492, 0.001, -8.26647)
