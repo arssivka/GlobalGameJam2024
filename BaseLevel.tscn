@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=14 format=3 uid="uid://sj2r8pknotii"]
 
 [ext_resource type="Shader" path="res://Checkerboard.gdshader" id="1_kpwfg"]
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
 [ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="2_5coqe"]
 [ext_resource type="PackedScene" uid="uid://dl4g1iqwp5qu7" path="res://Characters/EnemyHero/Enemy.tscn" id="3_yjj8y"]
+[ext_resource type="PackedScene" uid="uid://dqae2xox4em2l" path="res://Utils/EnemySpawner/EnemySpawner.tscn" id="5_68odm"]
 [ext_resource type="PackedScene" uid="uid://b6hun0cyssk3m" path="res://Characters/Patient/Patient.tscn" id="6_2r8it"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
@@ -133,6 +134,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9941, -2.08165e-12, 6.5552
 [node name="Patient3" parent="NavigationRegion3D" instance=ExtResource("6_2r8it")]
 transform = Transform3D(0.999909, 0, -0.0134561, 0, 1, 0, 0.0134561, 0, 0.999909, 15.1178, 0, 4.16081)
 
+[node name="EnemySpawner" parent="." instance=ExtResource("5_68odm")]
+MinSpawnDistance = 5.0
+RoutesNodePath = NodePath("../Enemies")
+SpawnPointsNodePath = NodePath("../Enemies/Spawners")
+EnemyScene = ExtResource("3_yjj8y")
+
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource("3_yjj8y")]
@@ -148,10 +155,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 curve = SubResource("Curve3D_1i7di")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Route_Enemy1"]
-transform = Transform3D(-0.972945, -0.000170082, 0.231034, 0, 0.999999, 0.000736178, -0.231034, 0.00071626, -0.972945, -12.3681, -0.998901, -2.71342)
+transform = Transform3D(-0.972945, -0.000170082, 0.231034, -7.27595e-12, 0.999999, 0.000736178, -0.231034, 0.00071626, -0.972945, -12.3681, -0.998901, -2.71342)
 
 [node name="Route_Enemy2" type="Path3D" parent="Enemies"]
 curve = SubResource("Curve3D_ro6gb")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Route_Enemy2"]
 transform = Transform3D(-0.28561, 0.000230162, -0.958346, -1.45519e-11, 1, 0.000240166, 0.958345, 6.8594e-05, -0.28561, -18.1974, 0.0142822, -17.901)
+
+[node name="Spawners" type="Node3D" parent="Enemies"]
+
+[node name="Marker3D" type="Marker3D" parent="Enemies/Spawners"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.528199, 0)

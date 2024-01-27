@@ -6,6 +6,8 @@ public partial class GameState : Node
 {
     public int SCORE { get; set; } = 0;
     public List<int> Highscore = new List<int>();
+    public EnemySpawner EnemySpawner;
+    
     public void SaveResult()
     {
         using var saveGame = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);
