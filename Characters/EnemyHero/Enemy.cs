@@ -120,8 +120,9 @@ public partial class Enemy : CharacterBody3D
 	{
 		GetNode<Timer>(_playerDetectionTimerPath).Stop();
 		_playerNode = body;
+		GetNode<Node3D>(_exclamationMarkPath).Visible = true;
 	}
-	
+
 	private void OnVisionAreaBodyExited(Node3D body)
 	{
 		GetNode<Timer>(_playerDetectionTimerPath).Start();
@@ -136,6 +137,7 @@ public partial class Enemy : CharacterBody3D
 	private void OnPlayerDetectionTimerTimeout()
 	{
 		_playerNode = null;
+		GetNode<Node3D>(_exclamationMarkPath).Visible = false;
 	}
 
 	private void OnNavigationAgentNavigationFinished()
