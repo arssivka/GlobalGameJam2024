@@ -205,4 +205,12 @@ public partial class Hero : CharacterBody3D
 		Velocity = moveVelocity;
 		MoveAndSlide();
 	}
+	
+	private void OnHitAreaBodyEntered(Node3D body)
+	{
+	}
+	
+	private void OnHitAreaBodyExited(Node3D body)
+	{
+	}
 }

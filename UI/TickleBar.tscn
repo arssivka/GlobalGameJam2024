@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgouekwqpp31d"]
+
+[ext_resource type="Material" uid="uid://ds2qbaxeu4pfx" path="res://Art/Shaders/ProgressBar_Mat.tres" id="1_ggdwj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_n11xo"]
+
+[node name="TickleBar" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+mesh = SubResource("PlaneMesh_n11xo")
+surface_material_override/0 = ExtResource("1_ggdwj")

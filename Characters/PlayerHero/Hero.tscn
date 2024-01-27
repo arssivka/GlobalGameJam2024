@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy7dcihmxkksa"]
+[gd_scene load_steps=10 format=3 uid="uid://dy7dcihmxkksa"]
 
 [ext_resource type="Script" path="res://Characters/PlayerHero/Hero.cs" id="1_as0lt"]
 [ext_resource type="PackedScene" uid="uid://yurluqjkqmdj" path="res://Characters/PlayerHero/Meshes/Hero_Idle/Hero_Idle.glb" id="1_kdcs5"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dkyv5w340kp8" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
 [ext_resource type="AudioStream" uid="uid://c3tla6fmr33iw" path="res://Art/Sounds/Boing_Short.wav" id="7_yead6"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d3ryu"]
+radius = 1.488
+height = 3.961
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8uwi"]
 radius = 1.0
 height = 2.4
@@ -16,6 +20,15 @@ height = 2.4
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_as0lt")
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09894, 0)
+shape = SubResource("CapsuleShape3D_d3ryu")
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -49,3 +62,6 @@ visible = false
 [node name="StepsSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_yead6")
 volume_db = -7.0
+
+[connection signal="body_entered" from="HitArea" to="." method="OnHitAreaBodyEntered"]
+[connection signal="body_exited" from="HitArea" to="." method="OnHitAreaBodyExited"]
