@@ -3,6 +3,12 @@ using System;
 
 public partial class Hero : CharacterBody3D
 {
+	public enum State
+	{
+		Normal,
+		Tickling,
+	};
+
 	[Export]
 	public const float Speed = 500.0f;
 	[Export]
@@ -14,12 +20,53 @@ public partial class Hero : CharacterBody3D
 	[Export]
 	public const float JumpStartHeight = 0.1f;
 	private float VerticalSpeed = 0.0f;
-
+	private State CurrentState = State.Normal;
 	private Vector3 MoveDirection = new Vector3(0, 0, 0);
 	private NodePath RunMeshPath = new NodePath("Pivot/Hero_Run");
 	private NodePath IdleMeshPath = new NodePath("Pivot/Hero_Idle");
 	private NodePath TickleMeshPath = new NodePath("Pivot/Hero_Tickle");
-	private NodePath CameraPath = new NodePath("CameraPivot/Camera");
+	private Node3D Victim = null;
+	private Hud PlayerHud = null;
+
+	private int ScoreCount = 0;
+
+
+	public void StartTickling(Node3D body)
+	{
+		ChangeState(State.Tickling);
+		Victim = body;
+	}
+
+	public void StopTickling()
+	{
+		ChangeState(State.Normal);
+		Victim = null;
+	}
+
+	public void OnTicklingSucceed(int scores)
+	{
+		ChangeState(State.Normal);
+		Victim = null;
+		ScoreCount += scores;
+		PlayerHud.OnScoreCountChanged(ScoreCount);
+	}
+
+	private void ChangeState(State newState)
+	{
+		CurrentState = newState;
+		if (CurrentState == State.Tickling)
+		{
+			GetNode<Node3D>(RunMeshPath).Hide();
+			GetNode<Node3D>(IdleMeshPath).Hide();
+			GetNode<Node3D>(TickleMeshPath).Show();
+		}
+		else
+		{
+			GetNode<Node3D>(RunMeshPath).Hide();
+			GetNode<Node3D>(IdleMeshPath).Show();
+			GetNode<Node3D>(TickleMeshPath).Hide();
+		}
+	}
 
 	private void UpdateDirection()
 	{
@@ -27,6 +74,19 @@ public partial class Hero : CharacterBody3D
 		{
 			Vector3 direction = -Velocity;
 			direction.Y = 0;
+			if(Victim != null)
+			{
+				direction = GlobalPosition - Victim.GlobalPosition;
+				if (Mathf.Abs(direction.X) > Mathf.Abs(direction.Z))
+				{
+					direction.Z = 0;
+				}
+				else
+				{
+					direction.X = 0;
+				}
+			}
+
 			if (!direction.IsZeroApprox())
 			{
 				GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
@@ -36,6 +96,10 @@ public partial class Hero : CharacterBody3D
 
 	private void UpdateMovementMeshes(double delta)
 	{
+		if (CurrentState != State.Normal)
+		{
+			return;
+		}
 		if (MoveDirection.IsZeroApprox())
 		{
 			GetNode<Node3D>(RunMeshPath).Hide();
@@ -60,11 +124,14 @@ public partial class Hero : CharacterBody3D
 	private void UpdateJumping(double delta)
 	{
 		Vector3 pivotPosition = GetNode<Node3D>("Pivot").Position; 
-		if (!MoveDirection.IsZeroApprox())
+		if (CurrentState == State.Normal)
 		{
-			if (pivotPosition.Y < JumpStartHeight)
+			if (!MoveDirection.IsZeroApprox())
 			{
-				VerticalSpeed = JumpVelocity;
+				if (pivotPosition.Y < JumpStartHeight)
+				{
+					VerticalSpeed = JumpVelocity;
+				}
 			}
 		}
 		VerticalSpeed = Mathf.Max(-JumpVelocity, VerticalSpeed - Gravity * (float)delta);
@@ -78,6 +145,8 @@ public partial class Hero : CharacterBody3D
 	{
 		base._Ready();
 		GetNode<Node3D>(TickleMeshPath).Hide();
+		PlayerHud = GetNode<Hud>("HUD");
+		PlayerHud.OnScoreCountChanged(ScoreCount);
 	}
 
 	public override void _Process(double delta)

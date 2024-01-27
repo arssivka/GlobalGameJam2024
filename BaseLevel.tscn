@@ -44,6 +44,9 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 50, 0)
 [node name="HeroRoot" parent="." instance=ExtResource("2_5coqe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2035, 0, 16.3885)
 
+[node name="Enemy" parent="." instance=ExtResource("3_yjj8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93464, 0, 14.9681)
+
 [node name="Bed" parent="." instance=ExtResource("4_feads")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.86492, 0.001, -8.26647)
 
@@ -113,11 +116,14 @@ transform = Transform3D(-4.37114e-08, 0, 6.4, 0, 4, 0, -1, 0, -2.79753e-07, -24,
 [node name="Wall18" parent="NavigationRegion3D/Walls" instance=ExtResource("1_mdhab")]
 transform = Transform3D(-4.37114e-08, 0, -5.1744, 0, 4, 0, 1, 0, -2.2618e-07, 3, 0, -18)
 
-[node name="Patient" parent="." instance=ExtResource("6_2r8it")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9126, 0, 6.55529)
+[node name="Patient" parent="NavigationRegion3D" instance=ExtResource("6_2r8it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.494, -2.08165e-12, 16.3714)
 
-[node name="Patient2" parent="." instance=ExtResource("6_2r8it")]
-transform = Transform3D(0.999909, 0, -0.0134561, 0, 1, 0, 0.0134561, 0, 0.999909, 15.9126, 2.08165e-12, 4.16081)
+[node name="Patient2" parent="NavigationRegion3D" instance=ExtResource("6_2r8it")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9126, -2.08165e-12, 6.55529)
+
+[node name="Patient3" parent="NavigationRegion3D" instance=ExtResource("6_2r8it")]
+transform = Transform3D(0.999909, 0, -0.0134561, 0, 1, 0, 0.0134561, 0, 0.999909, 15.9126, 0, 4.16081)
 
 [node name="Enemies" type="Node3D" parent="."]
 
