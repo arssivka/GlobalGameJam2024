@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://126vr6w5271u"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.cs" id="1_rehe0"]
-[ext_resource type="Texture2D" uid="uid://d1kmkvf4tt25f" path="res://Art/Textures/T_UI_Menu.jpg" id="2_bohq3"]
+[ext_resource type="Texture2D" uid="uid://bmtmc8xb1bdjc" path="res://Art/Textures/T_MainMenu.png" id="2_bjpf4"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,7 +21,8 @@ offset_top = -68.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bohq3")
+texture = ExtResource("2_bjpf4")
+expand_mode = 5
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
@@ -30,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -301.0
-offset_top = -174.5
-offset_right = 301.0
-offset_bottom = 174.5
+offset_left = -299.0
+offset_top = -100.0
+offset_right = 303.0
+offset_bottom = 249.0
 grow_horizontal = 2
 grow_vertical = 2
 
