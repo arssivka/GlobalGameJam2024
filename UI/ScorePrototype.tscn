@@ -9,6 +9,8 @@ script = ExtResource("1_3soka")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 
 [node name="ScoreCount" type="Label" parent="."]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
