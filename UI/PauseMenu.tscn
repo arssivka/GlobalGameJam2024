@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkyv5w340kp8"]
+
+[ext_resource type="Script" path="res://UI/PauseMenu.cs" id="1_76eha"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_ej7o0"]
+script/source = "using Godot;
+using System;
+
+public partial class MenuButton : Button
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_76eha")
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 281.0
+offset_top = 253.0
+offset_right = 779.0
+offset_bottom = 330.0
+text = "Resume
+"
+
+[node name="MenuButton" type="Button" parent="."]
+offset_left = 281.0
+offset_top = 364.0
+offset_right = 779.0
+offset_bottom = 438.0
+text = "Menu
+"
+script = SubResource("CSharpScript_ej7o0")
+
+[connection signal="pressed" from="ResumeButton" to="." method="SwitchPause"]
+[connection signal="pressed" from="MenuButton" to="." method="OnMenuButtonPressd"]

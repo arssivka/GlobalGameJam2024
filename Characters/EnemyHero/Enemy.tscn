@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl4g1iqwp5qu7"]
+[gd_scene load_steps=8 format=3 uid="uid://dl4g1iqwp5qu7"]
 
 [ext_resource type="Script" path="res://Characters/EnemyHero/Enemy.cs" id="1_os6cw"]
 [ext_resource type="PackedScene" uid="uid://uu3e07o4vck3" path="res://Characters/EnemyHero/Enemy_Idle/Enemy_Idle.glb" id="1_yi13t"]
@@ -6,15 +6,31 @@
 [ext_resource type="PackedScene" uid="uid://ysferr8jp2wc" path="res://Characters/EnemyHero/Enemy_Run_2/Enemy_Run_2.glb" id="3_d3qxr"]
 [ext_resource type="PackedScene" uid="uid://cohcdi61p6euv" path="res://Characters/EnemyHero/Attributes/exclamation_mark.glb" id="4_gv8o2"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pu7jy"]
+height = 7.49523
+radius = 5.91041
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nuoaf"]
 radius = 1.0
 height = 2.4
 
 [node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_os6cw")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.3, 2.08165e-12)
+
+[node name="VisionArea" type="Area3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.08165e-12, -1.3, -2.08165e-12)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/VisionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46647, 5.67235)
+shape = SubResource("CylinderShape3D_pu7jy")
 
 [node name="Enemy_Idle" parent="Pivot" instance=ExtResource("1_yi13t")]
 
@@ -35,3 +51,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2316, 0)
 shape = SubResource("CapsuleShape3D_nuoaf")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="NavigationLockTimer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="PlayerDetectionTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="body_entered" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyEntered"]
+[connection signal="body_exited" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyExited"]
+[connection signal="timeout" from="NavigationLockTimer" to="." method="OnNavigationLockTimerTimeout"]
+[connection signal="timeout" from="PlayerDetectionTimer" to="." method="OnPlayerDetectionTimerTimeout"]
