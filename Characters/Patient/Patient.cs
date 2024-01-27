@@ -20,17 +20,19 @@ public partial class Patient : StaticBody3D
 	private Node3D IdleMesh;
 	private Node3D TickledMesh;
 	private Node3D LaughMesh;
+	
+	private bool _enemySpawned = false;	
 
 	private AudioStreamPlayer3D HihiPlayer = null;
 	private AudioStreamPlayer3D HysteriaPlayer = null;
-
+	
 	private Hero TicklingHero;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		IdleMesh = GetNode<Node3D>("Pivot/MeshBox_Idle");
-		TickledMesh = GetNode<Node3D>("Pivot/MeshBox_Tickled");
-		LaughMesh = GetNode<Node3D>("Pivot/MeshBox_Laugh");
+		IdleMesh = GetNode<Node3D>("Pivot/Dude_Sleep");
+		TickledMesh = GetNode<Node3D>("Pivot/Dude_Tickled");
+		LaughMesh = GetNode<Node3D>("Pivot/Dude_Laugh");
 		HihiPlayer = GetNode<AudioStreamPlayer3D>("HihiPlayer");
 		HysteriaPlayer = GetNode<AudioStreamPlayer3D>("HysteriaPlayer");
 
@@ -74,17 +76,22 @@ public partial class Patient : StaticBody3D
 				HysteriaPlayer.VolumeDb = 0;
 			}
 		}
+
+		UpdateProgressBar();
 	}
 
 	private void OnBodyTickingZoneEntered(Node3D body)
 	{
+		if (CurrentState == State.Laugh)
+		{
+			return;
+		}
 		TicklingHero = body as Hero;
 		if (TicklingHero != null)
 		{
 			OnStateSchanged(State.Tickled);
 			TicklingHero.StartTickling(this);
 		}
-
 	}
 
 	private void OnBodyTickingZoneLeft(Node3D body)
@@ -112,6 +119,11 @@ public partial class Patient : StaticBody3D
 			LaughMesh.Show();
 			HihiPlayer.Stop();
 			HysteriaPlayer.Play();
+			if (!_enemySpawned && GetNode<GameState>("/root/GameState").EnemySpawner is not null)
+			{
+				_enemySpawned = true;
+				GetNode<GameState>("/root/GameState").EnemySpawner.SpawnEnemy(Position);
+			}
 		}
 		else if (newState == State.Tickled)
 		{
@@ -131,4 +143,39 @@ public partial class Patient : StaticBody3D
 		}
 	}
 
+	private void OnTickledFlipTimerTimeout()
+	{
+		var scaleTickled = TickledMesh.Scale;
+		scaleTickled.X = -scaleTickled.X;
+		TickledMesh.Scale = scaleTickled;
+	}
+
+	private void OnLaughFlipTimerTimeout()
+	{
+		var scaleLaugh = LaughMesh.Scale;
+		scaleLaugh.X = -scaleLaugh.X;
+		LaughMesh.Scale = scaleLaugh;
+	}
+
+	private void UpdateProgressBar()
+	{
+		const string path = "ProgressBar/SubViewport/TextureProgressBar";
+		var progressBar = GetNode<TextureProgressBar>(path);
+
+		switch (CurrentState)
+		{
+			case State.Idle:
+				progressBar.Visible = false;
+				break;
+			case State.Tickled:
+				progressBar.Value = TicklingTime / TicklingTimeLimit * 100;
+				progressBar.Visible = true;
+				break;
+			case State.Laugh:
+				progressBar.Value = 100;
+				progressBar.Visible = true;
+				progressBar.TintProgress = new Color(0.858824f, 0.0196078f, 0.207843f, 1f);
+				break;
+		}
+	}
 }

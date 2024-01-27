@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://devkarhd84i6h"]
+
+[ext_resource type="Texture2D" uid="uid://bdm7hbfvo5n7c" path="res://Art/UI/energy_bar_bg.png" id="1_isjfh"]
+[ext_resource type="Script" path="res://UI/ProgressBar.cs" id="1_rgq2l"]
+[ext_resource type="Texture2D" uid="uid://dpkjo467bj0jk" path="res://Art/UI/energy_bar_fill.png" id="3_hlr42"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8wn8"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_isjfh")
+billboard_mode = 1
+
+[node name="ProgressBar" type="Sprite3D"]
+material_override = SubResource("StandardMaterial3D_v8wn8")
+texture = ExtResource("1_isjfh")
+script = ExtResource("1_rgq2l")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(248, 40)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_progress = ExtResource("3_hlr42")
