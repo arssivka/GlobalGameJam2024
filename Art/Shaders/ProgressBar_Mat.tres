@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ds2qbaxeu4pfx"]
+
+[ext_resource type="Shader" path="res://Art/Shaders/ProgressBar.gdshader" id="1_gvevl"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gvevl")
+shader_parameter/progress = 0.0
+shader_parameter/ProgressColor = Vector3(0, 1, 0)
+shader_parameter/BarColor = Vector3(0.1, 0.1, 0.1)

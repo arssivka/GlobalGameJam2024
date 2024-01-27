@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=14 format=3 uid="uid://sj2r8pknotii"]
 
 [ext_resource type="Shader" path="res://Checkerboard.gdshader" id="1_kpwfg"]
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
@@ -25,6 +25,20 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Arr
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yjcil"]
 size = Vector2(50, 50)
+
+[sub_resource type="Curve3D" id="Curve3D_1i7di"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -12.3681, -0.998901, -2.71342, 0, 0, 0, 0, 0, 0, -18.3431, -1.01794, 22.4489, 0, 0, 0, 0, 0, 0, 11.5432, -0.996948, -1.33081, 0, 0, 0, 0, 0, 0, 1.01581, -1.00232, 4.38614, 0, 0, 0, 0, 0, 0, 1.10275, -1.01758, 23.6833, 0, 0, 0, 0, 0, 0, 23.2907, -1.01538, 23.0766, 0, 0, 0, 0, 0, 0, 20.9771, -0.982056, -19.3713, 0, 0, 0, 0, 0, 0, 5.8737, -0.981934, -21.0692),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_ro6gb"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -18.1974, 0.0142822, -17.901, 0, 0, 0, 0, 0, 0, -0.17471, 0.00976562, -12.5298, 0, 0, 0, 0, 0, 0, -5.935, -0.00537109, -3.09332, 0, 0, 0, 0, 0, 0, -11.205, 0.000244141, -0.69133, 0, 0, 0, 0, 0, 0, 0.210225, 0, -3.08166, 0, 0, 0, 0, 0, 0, 0.0719713, -0.0195312, 23.9424, 0, 0, 0, 0, 0, 0, -16.3791, -0.0172119, 21.1689, 0, 0, 0, 0, 0, 0, -22.4471, -0.00939941, 11.3091, 0, 0, 0, 0, 0, 0, -22.057, 0.00219727, -3.46577),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [node name="SceneRoot" type="Node3D"]
 
@@ -124,8 +138,23 @@ transform = Transform3D(0.999909, 0, -0.0134561, 0, 1, 0, 0.0134561, 0, 0.999909
 
 [node name="Enemies" type="Node3D" parent="."]
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("3_yjj8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.196749, 0, 14.9681)
+[node name="Enemy1" parent="Enemies" instance=ExtResource("3_yjj8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.80044, 0, 14.9681)
+RoutePath = NodePath("../Route_Enemy1/PathFollow3D")
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("3_yjj8y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.34551, 0, 3.55955)
+[node name="Enemy2" parent="Enemies" instance=ExtResource("3_yjj8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.93464, 0, 14.9681)
+RoutePath = NodePath("../Route_Enemy2/PathFollow3D")
+
+[node name="Route_Enemy1" type="Path3D" parent="Enemies"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+curve = SubResource("Curve3D_1i7di")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Route_Enemy1"]
+transform = Transform3D(-0.813733, -0.000377033, 0.581238, 0, 1, 0.000648672, -0.581238, 0.000527846, -0.813733, -1.27975, -0.998901, -1.43972)
+
+[node name="Route_Enemy2" type="Path3D" parent="Enemies"]
+curve = SubResource("Curve3D_ro6gb")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Route_Enemy2"]
+transform = Transform3D(-0.285612, 0.000230163, -0.958345, -7.27596e-12, 1, 0.000240167, 0.958345, 6.85947e-05, -0.285612, -18.1974, 0.0142822, -17.901)
