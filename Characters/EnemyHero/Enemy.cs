@@ -15,6 +15,7 @@ public partial class Enemy : CharacterBody3D
 	private Vector3 _targetVelocity = Vector3.Zero;
 	
 	private NodePath _exclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
+	private NodePath _playerDetectionTimerPath = new NodePath("PlayerDetectionTimer");
 
 	private NavigationAgent3D _navigationAgent;
 	private bool _navigationLocked = false;
@@ -106,16 +107,23 @@ public partial class Enemy : CharacterBody3D
 	
 	private void OnVisionAreaBodyEntered(Node3D body)
 	{
+		GetNode<Timer>(_playerDetectionTimerPath).Stop();
 		_playerNode = body;
 	}
 	
 	private void OnVisionAreaBodyExited(Node3D body)
 	{
+		GetNode<Timer>(_playerDetectionTimerPath).Start();
 		_playerNode = null;
 	}
 
 	private void OnNavigationLockTimerTimeout()
 	{
 		_navigationLocked = false;
+	}
+	
+	private void OnPlayerDetectionTimerTimeout()
+	{
+		_playerNode = null;
 	}
 }

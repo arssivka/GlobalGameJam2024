@@ -53,8 +53,14 @@ shape = SubResource("CapsuleShape3D_nuoaf")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="NavigationLockTimer" type="Timer" parent="."]
+wait_time = 0.25
 autostart = true
+
+[node name="PlayerDetectionTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="body_entered" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyEntered"]
 [connection signal="body_exited" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyExited"]
 [connection signal="timeout" from="NavigationLockTimer" to="." method="OnNavigationLockTimerTimeout"]
+[connection signal="timeout" from="PlayerDetectionTimer" to="." method="OnPlayerDetectionTimerTimeout"]

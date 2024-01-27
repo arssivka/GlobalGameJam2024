@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cidjk3junmhxv" path="res://Characters/PlayerHero/Meshes/Hero_Run/Hero_Run.glb" id="2_haw1t"]
 [ext_resource type="PackedScene" uid="uid://c1igoj0m24yhx" path="res://Characters/PlayerHero/Meshes/Hero_Tickle/Hero_Tickle.glb" id="3_wfkt7"]
 [ext_resource type="PackedScene" uid="uid://c7rdqapp2c4dg" path="res://UI/Hud.tscn" id="5_qoskq"]
-[ext_resource type="PackedScene" uid="uid://dkyv5w340kp8" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
+[ext_resource type="PackedScene" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8uwi"]
 radius = 1.0
