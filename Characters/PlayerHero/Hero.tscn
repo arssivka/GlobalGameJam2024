@@ -1,11 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy7dcihmxkksa"]
+[gd_scene load_steps=9 format=3 uid="uid://dy7dcihmxkksa"]
 
 [ext_resource type="Script" path="res://Characters/PlayerHero/Hero.cs" id="1_as0lt"]
 [ext_resource type="PackedScene" uid="uid://yurluqjkqmdj" path="res://Characters/PlayerHero/Meshes/Hero_Idle/Hero_Idle.glb" id="1_kdcs5"]
 [ext_resource type="PackedScene" uid="uid://cidjk3junmhxv" path="res://Characters/PlayerHero/Meshes/Hero_Run/Hero_Run.glb" id="2_haw1t"]
 [ext_resource type="PackedScene" uid="uid://c1igoj0m24yhx" path="res://Characters/PlayerHero/Meshes/Hero_Tickle/Hero_Tickle.glb" id="3_wfkt7"]
 [ext_resource type="PackedScene" uid="uid://c7rdqapp2c4dg" path="res://UI/Hud.tscn" id="5_qoskq"]
-[ext_resource type="PackedScene" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
+[ext_resource type="PackedScene" uid="uid://dkyv5w340kp8" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d3ryu"]
+radius = 1.488
+height = 3.961
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8uwi"]
 radius = 1.0
@@ -15,6 +19,15 @@ height = 2.4
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_as0lt")
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09894, 0)
+shape = SubResource("CapsuleShape3D_d3ryu")
 
 [node name="Pivot" type="Node3D" parent="."]
 
@@ -43,3 +56,6 @@ transform = Transform3D(0.952483, 0.203668, -0.226483, 0.0262985, 0.6858, 0.7273
 [node name="PauseMenu" parent="." instance=ExtResource("6_ldl2q")]
 process_mode = 3
 visible = false
+
+[connection signal="body_entered" from="HitArea" to="." method="OnHitAreaBodyEntered"]
+[connection signal="body_exited" from="HitArea" to="." method="OnHitAreaBodyExited"]
