@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://126vr6w5271u"]
+[gd_scene load_steps=3 format=3 uid="uid://126vr6w5271u"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.cs" id="1_rehe0"]
+[ext_resource type="Texture2D" uid="uid://d1kmkvf4tt25f" path="res://Art/Textures/T_UI_Menu.jpg" id="2_bohq3"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rehe0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -68.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bohq3")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 1
