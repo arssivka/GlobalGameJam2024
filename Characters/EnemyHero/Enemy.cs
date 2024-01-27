@@ -4,14 +4,19 @@ using System;
 public partial class Enemy : CharacterBody3D
 {
 	[Export]
-	public Vector3 _movementTargetPosition = new Vector3(-3.0f, 0.0f, 2.0f);
-
+	public Vector3 MovementTargetPosition = new Vector3(-3.0f, 0.0f, 2.0f);
+	[Export]
+	private float MovementSpeed { get; set; } = 400.0f;
+	[Export]
+	public int JumpImpulse { get; set; } = 30;
+	[Export]
+	public int FallAcceleration { get; set; } = 200;
 	
-	private NodePath ExclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
+	private Vector3 _targetVelocity = Vector3.Zero;
+	
+	private NodePath _exclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
 
 	private NavigationAgent3D _navigationAgent;
-
-	private float _movementSpeed = 10.0f;
 	
 	public Vector3 MovementTarget
 	{
@@ -40,7 +45,7 @@ public partial class Enemy : CharacterBody3D
 
 		if (Input.IsActionJustReleased("ShowExclamationMark"))
 		{
-			var exclamationMark = GetNode<Node3D>(ExclamationMarkPath);
+			var exclamationMark = GetNode<Node3D>(_exclamationMarkPath);
 			exclamationMark.Visible = !exclamationMark.Visible;
 		}
 	}
@@ -57,7 +62,20 @@ public partial class Enemy : CharacterBody3D
 		Vector3 currentAgentPosition = GlobalTransform.Origin;
 		Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-		Velocity = currentAgentPosition.DirectionTo(nextPathPosition) * _movementSpeed;
+		Vector3 horisontalSpeed = Vector3.Zero;
+		horisontalSpeed = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed * (float)delta;
+		_targetVelocity.X = horisontalSpeed.X;
+		_targetVelocity.Z = horisontalSpeed.Z;
+		
+		if (IsOnFloor() && !horisontalSpeed.IsZeroApprox())
+		{
+			_targetVelocity.Y = JumpImpulse;
+		}
+		else
+		{
+			_targetVelocity.Y -= FallAcceleration * (float)delta;
+		}
+		Velocity = _targetVelocity;
 		MoveAndSlide();
 	}
 
@@ -67,6 +85,6 @@ public partial class Enemy : CharacterBody3D
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
 		// Now that the navigation map is no longer empty, set the movement target.
-		MovementTarget = _movementTargetPosition;
+		MovementTarget = MovementTargetPosition;
 	}
 }
