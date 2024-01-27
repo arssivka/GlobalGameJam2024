@@ -16,6 +16,9 @@ public partial class Hero : CharacterBody3D
 	[Export]
 	public const float Gravity = 10f;
 	[Export]
+	public const float TickleJumpVelocity = 3.5f;
+	[Export]
+	public const float TickleGravity = 40f;
 	public const float GroundedHeight = 0.5f;
 	[Export]
 	public const float JumpStartHeight = 0.1f;
@@ -136,9 +139,17 @@ public partial class Hero : CharacterBody3D
 					StepsSound.PitchScale = 0.8f - (float)(random.NextDouble()) * 0.2f;
 				}
 			}
+			VerticalSpeed = Mathf.Max(-JumpVelocity, VerticalSpeed - Gravity * (float)delta);
 		}
-		VerticalSpeed = Mathf.Max(-JumpVelocity, VerticalSpeed - Gravity * (float)delta);
-
+		else if (CurrentState == State.Tickling)
+		{
+			if (pivotPosition.Y < JumpStartHeight)
+			{
+				VerticalSpeed = TickleJumpVelocity;
+			}
+			VerticalSpeed = Mathf.Max(-JumpVelocity, VerticalSpeed - TickleGravity * (float)delta);
+		}
+	
 		pivotPosition.Y = Mathf.Max(0, pivotPosition.Y + VerticalSpeed * (float)delta);
 
 		GetNode<Node3D>("Pivot").Position = pivotPosition;
