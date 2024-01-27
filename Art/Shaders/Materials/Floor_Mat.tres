@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://33rmelw16i7o"]
+
+[ext_resource type="Shader" uid="uid://c7qxa3serncwh" path="res://Art/Shaders/Environment.tres" id="1_1rhjj"]
+[ext_resource type="Texture2D" uid="uid://byv3bcwxqnhkn" path="res://Art/Textures/T_TiledFloor3_A.png" id="2_3gb00"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_1rhjj")
+shader_parameter/Blacks = Color(0.211765, 0.0941176, 0, 1)
+shader_parameter/Whites = Color(0.980392, 0.913725, 0.882353, 1)
+shader_parameter/UVW_Scale = Vector3(15, 15, 15)
+shader_parameter/triplanar_scale = Vector3(2, 1, 2)
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_sharpness = 0.5
+shader_parameter/TextureParameterTriplanar = ExtResource("2_3gb00")
