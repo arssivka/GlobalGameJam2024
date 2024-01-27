@@ -29,24 +29,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_76eha")
 
-[node name="ResumeButton" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -98.5
+offset_right = 300.5
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResumeButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 281.0
-offset_top = 253.0
-offset_right = 779.0
-offset_bottom = 330.0
+offset_right = 600.0
+offset_bottom = 75.0
 text = "Resume
 "
 
-[node name="MenuButton" type="Button" parent="."]
+[node name="MenuButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 281.0
-offset_top = 364.0
-offset_right = 779.0
-offset_bottom = 438.0
+offset_top = 120.0
+offset_right = 600.0
+offset_bottom = 195.0
 text = "Menu
 "
 script = SubResource("CSharpScript_ej7o0")
 
-[connection signal="pressed" from="ResumeButton" to="." method="SwitchPause"]
-[connection signal="pressed" from="MenuButton" to="." method="OnMenuButtonPressd"]
+[connection signal="pressed" from="Control/ResumeButton" to="." method="SwitchPause"]
+[connection signal="pressed" from="Control/MenuButton" to="." method="OnMenuButtonPressd"]

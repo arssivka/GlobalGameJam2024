@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgouekwqpp31d"]
 
-[ext_resource type="Material" uid="uid://ds2qbaxeu4pfx" path="res://Art/Shaders/ProgressBar_Mat.tres" id="1_ggdwj"]
+[ext_resource type="Material" uid="uid://ds2qbaxeu4pfx" path="res://Art/Shaders/Materials/ProgressBar_Mat.tres" id="1_ggdwj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_n11xo"]
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1xami412drl7"
-path.s3tc="res://.godot/imported/Bed_1.png-c1abababfa22aabc366b4c4a78f048d2.s3tc.ctex"
+uid="uid://c7adg1axpx7c3"
+path.s3tc="res://.godot/imported/Dude_Laugh_0.png-be6901b7e9216ca7ba9b51578d2d58e3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Art/LD/Bed/Bed_1.png"
-dest_files=["res://.godot/imported/Bed_1.png-c1abababfa22aabc366b4c4a78f048d2.s3tc.ctex"]
+source_file="res://Characters/Patient/Dude_Laugh/Dude_Laugh_0.png"
+dest_files=["res://.godot/imported/Dude_Laugh_0.png-be6901b7e9216ca7ba9b51578d2d58e3.s3tc.ctex"]
 
 [params]
 

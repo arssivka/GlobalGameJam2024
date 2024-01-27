@@ -20,7 +20,7 @@ public partial class MainMenu : Control
 
 	public void OnLeaderboardButtonPressd()
 	{
-
+		GetTree().ChangeSceneToFile("res://UI/highscores.tscn");
 	}
 
 	public void OnQuitButtonPressd()

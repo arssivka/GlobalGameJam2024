@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk1eggnclftdk"
-path.s3tc="res://.godot/imported/Bed_2.png-e2472f815a2d0957d0165ba9e8818fb8.s3tc.ctex"
+uid="uid://5ra6vtylct76"
+path.s3tc="res://.godot/imported/Dude_Tickled_2.png-a1d957787f4678de772051131f1cb015.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Art/LD/Bed/Bed_2.png"
-dest_files=["res://.godot/imported/Bed_2.png-e2472f815a2d0957d0165ba9e8818fb8.s3tc.ctex"]
+source_file="res://Characters/Patient/Dude_Tickled/Dude_Tickled_2.png"
+dest_files=["res://.godot/imported/Dude_Tickled_2.png-a1d957787f4678de772051131f1cb015.s3tc.ctex"]
 
 [params]
 
