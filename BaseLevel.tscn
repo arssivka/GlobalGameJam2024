@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://sj2r8pknotii"]
+[gd_scene load_steps=9 format=3 uid="uid://sj2r8pknotii"]
 
+[ext_resource type="Shader" path="res://Checkerboard.gdshader" id="1_kpwfg"]
 [ext_resource type="PackedScene" uid="uid://cisxnt7qjiepr" path="res://Art/LD/Wall.tscn" id="1_mdhab"]
 [ext_resource type="PackedScene" uid="uid://dy7dcihmxkksa" path="res://Characters/PlayerHero/Hero.tscn" id="2_5coqe"]
 [ext_resource type="PackedScene" uid="uid://dl4g1iqwp5qu7" path="res://Characters/EnemyHero/Enemy.tscn" id="3_yjj8y"]
@@ -8,7 +9,13 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_d6bl5"]
 size = Vector3(50, 2, 50)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ejivo"]
+render_priority = 0
+shader = ExtResource("1_kpwfg")
+shader_parameter/checkSize = 100.0
+
 [sub_resource type="BoxMesh" id="BoxMesh_vtuoi"]
+material = SubResource("ShaderMaterial_ejivo")
 size = Vector3(50, 2, 50)
 
 [node name="SceneRoot" type="Node3D"]
