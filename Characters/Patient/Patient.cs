@@ -74,6 +74,8 @@ public partial class Patient : StaticBody3D
 				HysteriaPlayer.VolumeDb = 0;
 			}
 		}
+
+		UpdateProgressBar();
 	}
 
 	private void OnBodyTickingZoneEntered(Node3D body)
@@ -146,5 +148,26 @@ public partial class Patient : StaticBody3D
 		var scaleLaugh = LaughMesh.Scale;
 		scaleLaugh.X = -scaleLaugh.X;
 		LaughMesh.Scale = scaleLaugh;
+	}
+
+	private void UpdateProgressBar()
+	{
+		const string path = "ProgressBar/SubViewport/TextureProgressBar";
+		var progressBar = GetNode<TextureProgressBar>(path);
+
+		switch (CurrentState)
+		{
+			case State.Idle:
+				progressBar.Visible = false;
+				break;
+			case State.Tickled:
+				progressBar.Value = TicklingTime / TicklingTimeLimit * 100;
+				progressBar.Visible = true;
+				break;
+			case State.Laugh:
+				progressBar.Value = 100;
+				progressBar.Visible = true;
+				break;
+		}
 	}
 }
