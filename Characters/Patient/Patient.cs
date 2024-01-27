@@ -20,6 +20,8 @@ public partial class Patient : StaticBody3D
 	private Node3D IdleMesh;
 	private Node3D TickledMesh;
 	private Node3D LaughMesh;
+	
+	private bool _enemySpawned = false;	
 
 	private AudioStreamPlayer3D HihiPlayer = null;
 	private AudioStreamPlayer3D HysteriaPlayer = null;
@@ -115,6 +117,11 @@ public partial class Patient : StaticBody3D
 			LaughMesh.Show();
 			HihiPlayer.Stop();
 			HysteriaPlayer.Play();
+			if (!_enemySpawned && GetNode<GameState>("/root/GameState").EnemySpawner is not null)
+			{
+				_enemySpawned = true;
+				GetNode<GameState>("/root/GameState").EnemySpawner.SpawnEnemy(Position);
+			}
 		}
 		else if (newState == State.Tickled)
 		{
