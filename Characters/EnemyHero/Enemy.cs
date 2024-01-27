@@ -17,6 +17,7 @@ public partial class Enemy : CharacterBody3D
 	private NodePath _exclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
 
 	private NavigationAgent3D _navigationAgent;
+	private bool _navigationLocked = false;
 	private Node3D _playerNode;
 	
 	public Vector3 MovementTarget
@@ -49,38 +50,40 @@ public partial class Enemy : CharacterBody3D
 			var exclamationMark = GetNode<Node3D>(_exclamationMarkPath);
 			exclamationMark.Visible = !exclamationMark.Visible;
 		}
+		
+		if (!_navigationLocked && _playerNode is not null && MovementTarget != _playerNode!.Position)
+		{
+			MovementTarget = _playerNode!.Position;
+			_navigationLocked = true;
+		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
 		base._PhysicsProcess(delta);
 
-		if (_playerNode is not null && MovementTarget != _playerNode!.Position)
+		if (!_navigationAgent.IsNavigationFinished())
 		{
-			MovementTarget = _playerNode!.Position;
-		}
+			Vector3 currentAgentPosition = GlobalTransform.Origin;
+			Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();
 
-		if (_navigationAgent.IsNavigationFinished())
-		{
-			return;
-		}
-
-		Vector3 currentAgentPosition = GlobalTransform.Origin;
-		Vector3 nextPathPosition = _navigationAgent.GetNextPathPosition();
-
-		Vector3 horisontalSpeed = Vector3.Zero;
-		horisontalSpeed = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed * (float)delta;
-		_targetVelocity.X = horisontalSpeed.X;
-		_targetVelocity.Z = horisontalSpeed.Z;
-		
-		if (IsOnFloor() && !horisontalSpeed.IsZeroApprox())
-		{
-			_targetVelocity.Y = JumpImpulse;
+			Vector3 horisontalSpeed = Vector3.Zero;
+			horisontalSpeed = currentAgentPosition.DirectionTo(nextPathPosition) * MovementSpeed * (float)delta;
+			_targetVelocity.X = horisontalSpeed.X;
+			_targetVelocity.Z = horisontalSpeed.Z;
+			
+			if (IsOnFloor() && !horisontalSpeed.IsZeroApprox())
+			{
+				_targetVelocity.Y = JumpImpulse;
+			}
 		}
 		else
 		{
-			_targetVelocity.Y -= FallAcceleration * (float)delta;
+			_targetVelocity.X = 0;
+			_targetVelocity.Z = 0;
 		}
+
+		_targetVelocity.Y -= FallAcceleration * (float)delta;
 	
 		Vector3 direction = -_targetVelocity;
 		direction.Y = 0;
@@ -109,5 +112,10 @@ public partial class Enemy : CharacterBody3D
 	private void OnVisionAreaBodyExited(Node3D body)
 	{
 		_playerNode = null;
+	}
+
+	private void OnNavigationLockTimerTimeout()
+	{
+		_navigationLocked = false;
 	}
 }
