@@ -20,6 +20,7 @@ public partial class Hero : CharacterBody3D
 	[Export]
 	public const float JumpStartHeight = 0.1f;
 	private float VerticalSpeed = 0.0f;
+	private AudioStreamPlayer3D StepsSound = null;
 	private State CurrentState = State.Normal;
 	private Vector3 MoveDirection = new Vector3(0, 0, 0);
 	private NodePath RunMeshPath = new NodePath("Pivot/Hero_Run");
@@ -129,7 +130,10 @@ public partial class Hero : CharacterBody3D
 			{
 				if (pivotPosition.Y < JumpStartHeight)
 				{
+					Random random = new Random();
 					VerticalSpeed = JumpVelocity;
+					StepsSound.Play();
+					StepsSound.PitchScale = 0.8f - (float)(random.NextDouble()) * 0.2f;
 				}
 			}
 		}
@@ -147,7 +151,7 @@ public partial class Hero : CharacterBody3D
 		PlayerHud = GetNode<Hud>("HUD");
 		PlayerHud.OnScoreCountChanged(ScoreCount);
 		PauseMenu = GetNode<PauseMenu>("PauseMenu");
-
+		StepsSound = GetNode<AudioStreamPlayer3D>("StepsSound");
 		
 	}
 

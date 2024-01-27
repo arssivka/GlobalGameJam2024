@@ -39,6 +39,7 @@ text = "Resume
 "
 
 [node name="MenuButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 281.0
 offset_top = 364.0
 offset_right = 779.0

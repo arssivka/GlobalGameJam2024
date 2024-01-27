@@ -20,6 +20,7 @@ offset_bottom = 305.0
 text = "Start game"
 
 [node name="LeaderboardButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 309.0
 offset_top = 346.0
 offset_right = 912.0
@@ -28,6 +29,7 @@ text = "Leaderboard
 "
 
 [node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 308.0
 offset_top = 469.0
 offset_right = 911.0

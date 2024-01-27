@@ -21,6 +21,9 @@ public partial class Patient : StaticBody3D
 	private Node3D TickledMesh;
 	private Node3D LaughMesh;
 
+	private AudioStreamPlayer3D HihiPlayer = null;
+	private AudioStreamPlayer3D HysteriaPlayer = null;
+
 	private Hero TicklingHero;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -28,6 +31,8 @@ public partial class Patient : StaticBody3D
 		IdleMesh = GetNode<Node3D>("Pivot/MeshBox_Idle");
 		TickledMesh = GetNode<Node3D>("Pivot/MeshBox_Tickled");
 		LaughMesh = GetNode<Node3D>("Pivot/MeshBox_Laugh");
+		HihiPlayer = GetNode<AudioStreamPlayer3D>("HihiPlayer");
+		HysteriaPlayer = GetNode<AudioStreamPlayer3D>("HysteriaPlayer");
 
 		TickledMesh.Hide();
 		LaughMesh.Hide();
@@ -36,17 +41,37 @@ public partial class Patient : StaticBody3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (CurrentState == State.Tickled && TicklingHero != null)
+		if (CurrentState == State.Tickled)
 		{
-			TicklingTime += (float)delta;
-			if (TicklingTime >= TicklingTimeLimit)
+			if (TicklingHero != null)
 			{
-				OnStateSchanged(State.Laugh);
-				TicklingHero.OnTicklingSucceed(BaseScoreCounnt);
+				HihiPlayer.VolumeDb = -7;
+				TicklingTime += (float)delta;
+				if (TicklingTime >= TicklingTimeLimit)
+				{
+					OnStateSchanged(State.Laugh);
+					TicklingHero.OnTicklingSucceed(BaseScoreCounnt);
+				}
+				else
+				{
+					// paste update visual ticking progress here
+				}
 			}
 			else
 			{
-				// paste update visual ticking progress here
+				HihiPlayer.VolumeDb = -17;
+			}
+		}
+		if (CurrentState == State.Laugh)
+		{
+			TicklingTime += (float)delta;
+			if (TicklingTime >= 3.0)
+			{
+				HysteriaPlayer.VolumeDb = -15;
+			}
+			else
+			{
+				HysteriaPlayer.VolumeDb = 0;
 			}
 		}
 	}
@@ -59,6 +84,7 @@ public partial class Patient : StaticBody3D
 			OnStateSchanged(State.Tickled);
 			TicklingHero.StartTickling(this);
 		}
+
 	}
 
 	private void OnBodyTickingZoneLeft(Node3D body)
@@ -80,21 +106,28 @@ public partial class Patient : StaticBody3D
 		CurrentState = newState;
 		if (newState == State.Laugh)
 		{
+			TicklingTime = 0;
 			IdleMesh.Hide();
 			TickledMesh.Hide();
 			LaughMesh.Show();
+			HihiPlayer.Stop();
+			HysteriaPlayer.Play();
 		}
 		else if (newState == State.Tickled)
 		{
 			IdleMesh.Hide();
 			TickledMesh.Show();
 			LaughMesh.Hide();
+			HihiPlayer.Play();
+			HysteriaPlayer.Stop();
 		}
 		else if (newState == State.Idle)
 		{
 			IdleMesh.Show();
 			TickledMesh.Hide();
 			LaughMesh.Hide();
+			HihiPlayer.Stop();
+			HysteriaPlayer.Stop();
 		}
 	}
 
