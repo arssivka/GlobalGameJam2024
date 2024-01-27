@@ -48,4 +48,5 @@ text = "Quit
 "
 
 [connection signal="pressed" from="Control/StartGameButton" to="." method="OnStartButtonPressd"]
+[connection signal="pressed" from="Control/LeaderboardButton" to="." method="OnLeaderboardButtonPressd"]
 [connection signal="pressed" from="Control/QuitButton" to="." method="OnQuitButtonPressd"]

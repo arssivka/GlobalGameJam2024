@@ -44,19 +44,6 @@ offset_right = 20.0
 offset_bottom = 200.0
 grow_horizontal = 2
 
-[node name="ScorePrototype" type="HBoxContainer" parent="ScoresAlign/VBoxContainer"]
-visible = false
-layout_mode = 2
-
-[node name="PlaceLabel" type="Label" parent="ScoresAlign/VBoxContainer/ScorePrototype"]
-layout_mode = 2
-text = "1: "
-
-[node name="ScoreLabel" type="Label" parent="ScoresAlign/VBoxContainer/ScorePrototype"]
-layout_mode = 2
-text = "100
-"
-
 [node name="MenuButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -71,3 +58,5 @@ offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Menu"
+
+[connection signal="pressed" from="MenuButton" to="." method="OnMenuButtonPressd"]

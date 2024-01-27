@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://c7qxa3serncwh"]
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://s2efaiv474ov"]
 
 [sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_qxcco"]
 parameter_name = "TextureParameterTriplanar"

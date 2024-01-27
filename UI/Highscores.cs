@@ -12,15 +12,23 @@ public partial class Highscores : Control
 		GlobalState = GetNode<GameState>("/root/GameState");
 		GlobalState.LoadResult();
 		ScoresContainer = GetNode<VBoxContainer>("ScoresAlign/VBoxContainer");
-		ScoresPrototype = GetNode<HBoxContainer>("ScoresAlign/VBoxContainer/ScorePrototype");
-		foreach(var result in GlobalState.Highscore)
+		var ScoreScene = GD.Load<PackedScene>("res://UI/ScorePrototype.tscn");
+		for(int i = 0; i < GlobalState.Highscore.Count; ++i)
 		{
-			HBoxContainer resultScore = ScoresPrototype;
+			var ScoreInstance = ScoreScene.Instantiate() as ScorePrototype;
+			
+			ScoreInstance.Init(i+1, GlobalState.Highscore[i]);
+			ScoresContainer.AddChild(ScoreInstance);
 		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	public void OnMenuButtonPressd()
+	{
+		GetTree().ChangeSceneToFile("res://UI/MainMenu.tscn");
 	}
 }
