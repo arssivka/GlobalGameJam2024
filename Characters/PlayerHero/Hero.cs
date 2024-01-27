@@ -24,14 +24,14 @@ public partial class Hero : CharacterBody3D
 	private void UpdateDirection()
 	{
 		if (!MoveDirection.IsZeroApprox())
-        {
+		{
 			Vector3 direction = -Velocity;
 			direction.Y = 0;
 			if (!direction.IsZeroApprox())
 			{
 				GetNode<Node3D>("Pivot").Basis = Basis.LookingAt(direction);
 			}
-        }
+		}
 	}
 
 	private void UpdateMovementMeshes(double delta)
@@ -115,7 +115,6 @@ public partial class Hero : CharacterBody3D
 		}
 
 		MoveDirection = MoveDirection.Normalized();
-
 	}
 
 	// Get the gravity from the project settings to be synced with RigidBody nodes.

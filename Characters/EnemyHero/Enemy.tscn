@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dl4g1iqwp5qu7"]
+[gd_scene load_steps=7 format=3 uid="uid://dl4g1iqwp5qu7"]
 
+[ext_resource type="Script" path="res://Characters/EnemyHero/Enemy.cs" id="1_os6cw"]
 [ext_resource type="PackedScene" uid="uid://uu3e07o4vck3" path="res://Characters/EnemyHero/Enemy_Idle/Enemy_Idle.glb" id="1_yi13t"]
 [ext_resource type="PackedScene" uid="uid://dv03r0a0lgkjw" path="res://Characters/EnemyHero/Enemy_Run_1/Enemy_Run_1.glb" id="2_xaofx"]
 [ext_resource type="PackedScene" uid="uid://ysferr8jp2wc" path="res://Characters/EnemyHero/Enemy_Run_2/Enemy_Run_2.glb" id="3_d3qxr"]
+[ext_resource type="PackedScene" uid="uid://cohcdi61p6euv" path="res://Characters/EnemyHero/Attributes/exclamation_mark.glb" id="4_gv8o2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nuoaf"]
 radius = 1.0
 height = 2.4
 
 [node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_os6cw")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.3, 2.08165e-12)
@@ -20,6 +23,12 @@ visible = false
 
 [node name="Enemy_Run_2" parent="Pivot" instance=ExtResource("3_d3qxr")]
 visible = false
+
+[node name="Exclamation_Mark" type="Node3D" parent="Pivot"]
+visible = false
+
+[node name="exclamation_mark" parent="Pivot/Exclamation_Mark" instance=ExtResource("4_gv8o2")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 1.65699, 0)
 
 [node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2316, 0)
