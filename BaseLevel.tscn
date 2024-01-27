@@ -55,6 +55,7 @@ navigation_mesh = SubResource("NavigationMesh_7vk4o")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11937, 0)
+visible = false
 mesh = SubResource("PlaneMesh_yjcil")
 
 [node name="Walls" type="Node3D" parent="NavigationRegion3D"]
