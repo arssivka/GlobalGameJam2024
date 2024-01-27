@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy7dcihmxkksa"]
+[gd_scene load_steps=8 format=3 uid="uid://dy7dcihmxkksa"]
 
 [ext_resource type="Script" path="res://Characters/PlayerHero/Hero.cs" id="1_as0lt"]
 [ext_resource type="PackedScene" uid="uid://yurluqjkqmdj" path="res://Characters/PlayerHero/Meshes/Hero_Idle/Hero_Idle.glb" id="1_kdcs5"]
 [ext_resource type="PackedScene" uid="uid://cidjk3junmhxv" path="res://Characters/PlayerHero/Meshes/Hero_Run/Hero_Run.glb" id="2_haw1t"]
 [ext_resource type="PackedScene" uid="uid://c1igoj0m24yhx" path="res://Characters/PlayerHero/Meshes/Hero_Tickle/Hero_Tickle.glb" id="3_wfkt7"]
 [ext_resource type="PackedScene" uid="uid://c7rdqapp2c4dg" path="res://UI/Hud.tscn" id="5_qoskq"]
+[ext_resource type="PackedScene" uid="uid://dkyv5w340kp8" path="res://UI/PauseMenu.tscn" id="6_ldl2q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n8uwi"]
 radius = 1.0
@@ -37,3 +38,7 @@ shape = SubResource("CapsuleShape3D_n8uwi")
 transform = Transform3D(0.952483, 0.203668, -0.226483, 0.0262985, 0.6858, 0.727314, 0.303453, -0.698711, 0.647857, -2.6499, 10.2846, 6.90031)
 
 [node name="HUD" parent="." instance=ExtResource("5_qoskq")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("6_ldl2q")]
+process_mode = 3
+visible = false

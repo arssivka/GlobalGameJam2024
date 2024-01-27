@@ -27,9 +27,8 @@ public partial class Hero : CharacterBody3D
 	private NodePath TickleMeshPath = new NodePath("Pivot/Hero_Tickle");
 	private Node3D Victim = null;
 	private Hud PlayerHud = null;
-
+	private PauseMenu PauseMenu = null;
 	private int ScoreCount = 0;
-
 
 	public void StartTickling(Node3D body)
 	{
@@ -147,6 +146,9 @@ public partial class Hero : CharacterBody3D
 		GetNode<Node3D>(TickleMeshPath).Hide();
 		PlayerHud = GetNode<Hud>("HUD");
 		PlayerHud.OnScoreCountChanged(ScoreCount);
+		PauseMenu = GetNode<PauseMenu>("PauseMenu");
+
+		
 	}
 
 	public override void _Process(double delta)
