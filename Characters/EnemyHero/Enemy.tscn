@@ -60,7 +60,12 @@ autostart = true
 wait_time = 3.0
 one_shot = true
 
+[node name="PathUpdateTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="body_entered" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyEntered"]
 [connection signal="body_exited" from="Pivot/VisionArea" to="." method="OnVisionAreaBodyExited"]
+[connection signal="navigation_finished" from="NavigationAgent3D" to="." method="OnNavigationAgentNavigationFinished"]
 [connection signal="timeout" from="NavigationLockTimer" to="." method="OnNavigationLockTimerTimeout"]
 [connection signal="timeout" from="PlayerDetectionTimer" to="." method="OnPlayerDetectionTimerTimeout"]

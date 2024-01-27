@@ -4,14 +4,15 @@ using System;
 public partial class Enemy : CharacterBody3D
 {
 	[Export]
-	public Vector3 MovementTargetPosition = new Vector3(-3.0f, 0.0f, 2.0f);
-	[Export]
 	private float MovementSpeed { get; set; } = 400.0f;
 	[Export]
 	public int JumpImpulse { get; set; } = 30;
 	[Export]
 	public int FallAcceleration { get; set; } = 200;
-	
+
+	[Export] public NodePath RoutePath { get; set; } = new NodePath();
+	[Export] public float RouteProgressRatioStep = 0.1f;
+
 	private Vector3 _targetVelocity = Vector3.Zero;
 	
 	private NodePath _exclamationMarkPath = new NodePath("Pivot/Exclamation_Mark");
@@ -102,15 +103,26 @@ public partial class Enemy : CharacterBody3D
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 
 		// Now that the navigation map is no longer empty, set the movement target.
-		MovementTarget = MovementTargetPosition;
+		UpdateTarget();
+	}
+	
+	private void UpdateTarget()
+	{
+		var route = GetNode<PathFollow3D>(RoutePath);
+		if (route is not null)
+		{
+			route!.ProgressRatio += RouteProgressRatioStep;
+			MovementTarget = route!.Position;
+		}
 	}
 	
 	private void OnVisionAreaBodyEntered(Node3D body)
 	{
 		GetNode<Timer>(_playerDetectionTimerPath).Stop();
 		_playerNode = body;
+		GetNode<Node3D>(_exclamationMarkPath).Visible = true;
 	}
-	
+
 	private void OnVisionAreaBodyExited(Node3D body)
 	{
 		GetNode<Timer>(_playerDetectionTimerPath).Start();
@@ -125,5 +137,17 @@ public partial class Enemy : CharacterBody3D
 	private void OnPlayerDetectionTimerTimeout()
 	{
 		_playerNode = null;
+		GetNode<Node3D>(_exclamationMarkPath).Visible = false;
+	}
+
+	private void OnNavigationAgentNavigationFinished()
+	{
+
+		UpdateTarget();
+	}
+
+	private void OnPathUpdateTimerTimeout()
+	{
+		UpdateTarget();
 	}
 }

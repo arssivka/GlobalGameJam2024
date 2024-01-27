@@ -12,7 +12,6 @@ public partial class PauseMenu : Control
 	public override void _Process(double delta)
 	{
 	}
-
 	
 	public override void _Input(InputEvent @event)
 	{

@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b6hun0cyssk3m"]
+[gd_scene load_steps=11 format=3 uid="uid://b6hun0cyssk3m"]
 
 [ext_resource type="Script" path="res://Characters/Patient/Patient.cs" id="1_7gk5t"]
+[ext_resource type="AudioStream" uid="uid://j0te07r8f75t" path="res://Art/Sounds/Laughter_Long.wav" id="2_58e1q"]
+[ext_resource type="AudioStream" uid="uid://b2febferddw62" path="res://Art/Sounds/Laughter_Hysterical.wav" id="3_a0lvf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ya22m"]
 size = Vector3(4, 1, 2)
@@ -53,6 +55,12 @@ monitorable = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.236539, 0, 0)
 shape = SubResource("BoxShape3D_pjmj7")
+
+[node name="HihiPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_58e1q")
+
+[node name="HysteriaPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_a0lvf")
 
 [connection signal="body_entered" from="Area3D" to="." method="OnBodyTickingZoneEntered"]
 [connection signal="body_exited" from="Area3D" to="." method="OnBodyTickingZoneLeft"]
