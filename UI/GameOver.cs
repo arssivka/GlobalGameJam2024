@@ -26,6 +26,6 @@ public partial class GameOver : Control
 
 	public void OnNewGameButtonPressd()
 	{
-		GetTree().ChangeSceneToFile("res://BaseLevel.tscn");
+		GetTree().ChangeSceneToFile(GlobalState.LevelPath);
 	}
 }

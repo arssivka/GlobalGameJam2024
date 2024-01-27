@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public partial class GameState : Node
 {
     public int SCORE { get; set; } = 0;
+    public string LevelPath = "res://BaseLevel.tscn";
     public List<int> Highscore = new List<int>();
     public void SaveResult()
     {
