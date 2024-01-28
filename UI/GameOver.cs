@@ -12,7 +12,8 @@ public partial class GameOver : Control
 		ScoreCountLabel = GetNode<Label>("Control/VBoxContainer/HBoxContainer/ScoreCount");
 		ScoreCountLabel.Text = GlobalState.SCORE.ToString();
 		GlobalState.UpdateHighscore();
-	}
+        GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)

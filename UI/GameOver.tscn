@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://v4h4u752xhqm"]
+[gd_scene load_steps=5 format=3 uid="uid://v4h4u752xhqm"]
 
 [ext_resource type="Script" path="res://UI/GameOver.cs" id="1_ion72"]
 [ext_resource type="Texture2D" uid="uid://bbupimme4yihp" path="res://Art/Textures/T_GameOver.png" id="2_ka26b"]
 [ext_resource type="FontFile" uid="uid://bder8f18wa5c" path="res://Art/Fonts/Retro Gaming.ttf" id="3_wuk5j"]
+[ext_resource type="AudioStream" uid="uid://dnkjpvr5b2ryb" path="res://Art/Sounds/Music_GameOver.wav" id="4_4m3ar"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -84,6 +85,9 @@ offset_bottom = 315.0
 theme_override_fonts/font = ExtResource("3_wuk5j")
 theme_override_font_sizes/font_size = 28
 text = "Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_4m3ar")
 
 [connection signal="pressed" from="Control/PlayButton" to="." method="OnNewGameButtonPressd"]
 [connection signal="pressed" from="Control/MenuButton" to="." method="OnMenuButtonPressd"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://126vr6w5271u"]
+[gd_scene load_steps=5 format=3 uid="uid://126vr6w5271u"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.cs" id="1_rehe0"]
 [ext_resource type="Texture2D" uid="uid://bmtmc8xb1bdjc" path="res://Art/Textures/T_MainMenu.png" id="2_bjpf4"]
 [ext_resource type="FontFile" uid="uid://bder8f18wa5c" path="res://Art/Fonts/Retro Gaming.ttf" id="3_44ejy"]
+[ext_resource type="AudioStream" uid="uid://b7chhm1j8h5rt" path="res://Art/Sounds/Music_Menu.wav" id="4_xoruo"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -65,6 +66,9 @@ theme_override_fonts/font = ExtResource("3_44ejy")
 theme_override_font_sizes/font_size = 28
 text = "Quit
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xoruo")
 
 [connection signal="pressed" from="Control/StartGameButton" to="." method="OnStartButtonPressd"]
 [connection signal="pressed" from="Control/LeaderboardButton" to="." method="OnLeaderboardButtonPressd"]

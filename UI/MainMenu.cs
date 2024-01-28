@@ -9,6 +9,7 @@ public partial class MainMenu : Control
 	public override void _Ready()
 	{
 		GlobalState = GetNode<GameState>("/root/GameState");
+		GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
