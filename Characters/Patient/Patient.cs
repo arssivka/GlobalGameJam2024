@@ -176,7 +176,7 @@ public partial class Patient : StaticBody3D
 				progressBar.Visible = true;
 				progressBar.TintProgress = new Color(0.858824f, 0.0196078f, 0.207843f, 1f);
 				GetNode<Node3D>("ParticlesPivot").Visible = true;
-                break;
+				break;
 		}
 	}
 }

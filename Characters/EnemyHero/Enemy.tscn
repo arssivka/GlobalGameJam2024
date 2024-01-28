@@ -11,7 +11,7 @@ height = 7.49523
 radius = 5.91041
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nuoaf"]
-radius = 1.0
+radius = 0.75
 height = 2.4
 
 [node name="Enemy" type="CharacterBody3D"]
