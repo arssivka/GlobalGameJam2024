@@ -155,7 +155,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
 curve = SubResource("Curve3D_1i7di")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Route_Enemy1"]
-transform = Transform3D(-0.972945, -0.000170082, 0.231034, 0, 0.999999, 0.000736178, -0.231034, 0.00071626, -0.972945, -12.3681, -0.998901, -2.71342)
+transform = Transform3D(-0.972945, -0.000170082, 0.231034, -7.27595e-12, 0.999999, 0.000736178, -0.231034, 0.00071626, -0.972945, -12.3681, -0.998901, -2.71342)
 
 [node name="Route_Enemy2" type="Path3D" parent="Enemies"]
 curve = SubResource("Curve3D_ro6gb")
