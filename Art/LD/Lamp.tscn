@@ -1,21 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce1luvr0iolr2"]
+[gd_scene load_steps=5 format=3 uid="uid://ce1luvr0iolr2"]
 
 [ext_resource type="Material" uid="uid://drl0luqdkewmi" path="res://Art/Shaders/Materials/Lamp_Mat.tres" id="1_25oxn"]
 [ext_resource type="Script" path="res://Art/LD/Lamp.cs" id="1_ek1ro"]
+[ext_resource type="Material" uid="uid://4v5v5a41pwfg" path="res://Art/Shaders/Materials/Lamp_MatBlue.tres" id="3_kabxg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p3ujm"]
 
 [node name="Lamp" type="Node3D"]
 script = ExtResource("1_ek1ro")
-LampColor = Color(0.886275, 0.313726, 0.101961, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstanceRed" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("BoxMesh_p3ujm")
 surface_material_override/0 = ExtResource("1_25oxn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.886275, 0.247059, 0.12549, 1)
+light_color = Color(0.745098, 0.156863, 0, 1)
 light_bake_mode = 1
 shadow_enabled = true
 omni_range = 6.10383
+
+[node name="MeshInstanceBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_p3ujm")
+skeleton = NodePath("../MeshInstanceRed")
+surface_material_override/0 = ExtResource("3_kabxg")

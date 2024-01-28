@@ -22,11 +22,13 @@ offset_bottom = 54.0
 [node name="ScoreLabel" type="Label" parent="ScoreContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_234xq")
+theme_override_font_sizes/font_size = 40
 text = "Score: "
 
 [node name="ScoreCount" type="Label" parent="ScoreContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_234xq")
+theme_override_font_sizes/font_size = 40
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -39,6 +41,7 @@ offset_right = -22.0
 offset_bottom = 37.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("2_234xq")
+theme_override_font_sizes/font_size = 40
 text = "Esc: pause"
 
 [node name="Hint" type="Control" parent="."]
@@ -88,3 +91,19 @@ theme_override_fonts/font = ExtResource("2_234xq")
 theme_override_font_sizes/font_size = 40
 text = "TICKLE FEET OF OTHER PATIENTS
    AVOID ORDERLIES IN ASYLUM"
+
+[node name="MoveHint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -133.0
+offset_top = -23.0
+offset_right = 133.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_234xq")
+theme_override_font_sizes/font_size = 28
+text = "Move: W, A, S, D.          Dash: Space."
