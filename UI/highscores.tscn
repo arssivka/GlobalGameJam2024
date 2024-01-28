@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clxjltjohm2be"]
+[gd_scene load_steps=4 format=3 uid="uid://clxjltjohm2be"]
 
 [ext_resource type="Script" path="res://UI/Highscores.cs" id="1_h5xwb"]
 [ext_resource type="Texture2D" uid="uid://bmtmc8xb1bdjc" path="res://Art/Textures/T_MainMenu.png" id="2_1j8v5"]
+[ext_resource type="FontFile" uid="uid://bder8f18wa5c" path="res://Art/Fonts/Retro Gaming.ttf" id="3_egxry"]
 
 [node name="Highscores" type="Control"]
 layout_mode = 3
@@ -51,6 +52,7 @@ offset_top = 100.0
 offset_right = 44.0
 offset_bottom = 124.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_egxry")
 theme_override_font_sizes/font_size = 30
 text = "Highscores"
 
@@ -78,6 +80,7 @@ offset_right = 300.0
 offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_egxry")
 theme_override_font_sizes/font_size = 28
 text = "Menu"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://126vr6w5271u"]
+[gd_scene load_steps=4 format=3 uid="uid://126vr6w5271u"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.cs" id="1_rehe0"]
 [ext_resource type="Texture2D" uid="uid://bmtmc8xb1bdjc" path="res://Art/Textures/T_MainMenu.png" id="2_bjpf4"]
+[ext_resource type="FontFile" uid="uid://bder8f18wa5c" path="res://Art/Fonts/Retro Gaming.ttf" id="3_44ejy"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -42,6 +43,7 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 600.0
 offset_bottom = 75.0
+theme_override_fonts/font = ExtResource("3_44ejy")
 theme_override_font_sizes/font_size = 28
 text = "Start game"
 
@@ -50,6 +52,7 @@ layout_mode = 0
 offset_top = 125.0
 offset_right = 600.0
 offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("3_44ejy")
 theme_override_font_sizes/font_size = 28
 text = "Leaderboard
 "
@@ -59,6 +62,7 @@ layout_mode = 0
 offset_top = 273.0
 offset_right = 600.0
 offset_bottom = 348.0
+theme_override_fonts/font = ExtResource("3_44ejy")
 theme_override_font_sizes/font_size = 28
 text = "Quit
 "
