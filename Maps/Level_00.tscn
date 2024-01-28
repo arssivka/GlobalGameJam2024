@@ -90,7 +90,7 @@ mesh = SubResource("PlaneMesh_gv151")
 [node name="Walls" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Wall" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
-transform = Transform3D(35.9215, 0, 0, 0, 4, 0, 0, 0, 1, -37.1637, 0, 40)
+transform = Transform3D(35.9215, 0, 0, 0, 4, 0, 0, 0, 1, -49.0481, 0, 40)
 
 [node name="Wall6" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
 transform = Transform3D(11, 0, 0, 0, 4, 0, 0, 0, 1, -29, 0, 35)
@@ -129,7 +129,7 @@ transform = Transform3D(14.96, 0, 0, 0, 4, 0, 0, 0, 1, 3, 0, 36)
 transform = Transform3D(18.9093, 0, 0, 0, 4, 0, 0, 0, 1, -1, 0, 40)
 
 [node name="Wall2" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
-transform = Transform3D(-0.999999, 0, -5.85645e-07, 0, 4, 0, 8.74227e-08, 0, -6.699, -17.0224, -1.90735e-06, 40.0552)
+transform = Transform3D(-0.999999, 0, -2.05634e-07, 0, 4, 0, 8.74227e-08, 0, -2.35218, -17.0224, -1.90735e-06, 35.9716)
 
 [node name="Wall7" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
 transform = Transform3D(-1, 0, -2.26494e-06, 0, 4, 0, 1.50996e-07, 0, -15, -29, 0, 36)
@@ -138,7 +138,7 @@ transform = Transform3D(-1, 0, -2.26494e-06, 0, 4, 0, 1.50996e-07, 0, -15, -29, 
 transform = Transform3D(-1, 0, -1.00818e-06, 0, 4, 0, 1.50996e-07, 0, -6.67686, -36.1475, 0, 39.9075)
 
 [node name="Wall24" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
-transform = Transform3D(-1, 0, -6.99849e-06, 0, 4, 0, 1.50996e-07, 0, -46.3488, -43.4194, 0, 39.9075)
+transform = Transform3D(-1, 0, -6.99849e-06, 0, 4, 0, 1.50996e-07, 0, -46.3488, -48.074, 0, 39.9607)
 
 [node name="Wall11" parent="NavigationRegion3D/Walls" instance=ExtResource("3_g8rcx")]
 transform = Transform3D(-0.999999, 0, -1.94141e-06, 0, 4, 0, 8.74227e-08, 0, -22.2072, -29, 0, 21)
