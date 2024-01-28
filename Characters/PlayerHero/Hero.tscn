@@ -63,5 +63,12 @@ visible = false
 stream = ExtResource("7_yead6")
 volume_db = -7.0
 
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.310262, 0.950651, 0, -0.950651, -0.310262, 0.0164175, 6.69366, -1.92672)
+light_specular = 0.0
+spot_range = 11.835
+spot_angle = 50.74
+spot_angle_attenuation = 3.03143
+
 [connection signal="body_entered" from="HitArea" to="." method="OnHitAreaBodyEntered"]
 [connection signal="body_exited" from="HitArea" to="." method="OnHitAreaBodyExited"]
