@@ -1,15 +1,21 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://33rmelw16i7o"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://33rmelw16i7o"]
 
-[ext_resource type="Shader" uid="uid://c7qxa3serncwh" path="res://Art/Shaders/Environment.tres" id="1_1rhjj"]
+[ext_resource type="Shader" uid="uid://s2efaiv474ov" path="res://Art/Shaders/Environment.tres" id="1_1rhjj"]
 [ext_resource type="Texture2D" uid="uid://byv3bcwxqnhkn" path="res://Art/Textures/T_TiledFloor3_A.png" id="2_3gb00"]
+[ext_resource type="Texture2D" uid="uid://des33rkp34uv3" path="res://Art/Textures/T_TiledFloor3_N.png" id="3_tss22"]
+[ext_resource type="Texture2D" uid="uid://cwf50vocctr06" path="res://Art/Textures/T_TiledFloor3_R.png" id="4_nbr71"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_1rhjj")
-shader_parameter/Blacks = Color(0.211765, 0.0941176, 0, 1)
+shader_parameter/Blacks = Color(0.278431, 0.141176, 0.0901961, 1)
 shader_parameter/Whites = Color(0.980392, 0.913725, 0.882353, 1)
 shader_parameter/UVW_Scale = Vector3(15, 15, 15)
+shader_parameter/Rough_Mult = 3.61
+shader_parameter/Normal_Intensity = 1.0
 shader_parameter/triplanar_scale = Vector3(2, 1, 2)
 shader_parameter/triplanar_offset = null
 shader_parameter/triplanar_sharpness = 0.5
-shader_parameter/TextureParameterTriplanar = ExtResource("2_3gb00")
+shader_parameter/Albedo = ExtResource("2_3gb00")
+shader_parameter/Roughness = ExtResource("4_nbr71")
+shader_parameter/Normal = ExtResource("3_tss22")

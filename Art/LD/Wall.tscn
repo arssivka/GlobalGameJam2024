@@ -3,6 +3,8 @@
 [ext_resource type="Material" uid="uid://dshx6wnud5ttk" path="res://Art/Shaders/Materials/Wall_Mat.tres" id="1_q851b"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_x8ep8"]
+lightmap_size_hint = Vector2i(14, 21)
+add_uv2 = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fshdg"]
 size = Vector3(1, 0.952148, 1)
@@ -14,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00232059, 5.96046e-08, 0.000702858)
 mesh = SubResource("BoxMesh_x8ep8")
 surface_material_override/0 = ExtResource("1_q851b")
 

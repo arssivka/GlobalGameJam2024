@@ -1,7 +1,7 @@
-[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://s2efaiv474ov"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://s2efaiv474ov"]
 
 [sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_qxcco"]
-parameter_name = "TextureParameterTriplanar"
+parameter_name = "Albedo"
 texture_repeat = 1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_sbjsi"]
@@ -20,6 +20,29 @@ operator = 3
 parameter_name = "UVW_Scale"
 default_value_enabled = true
 default_value = Vector3(10, 10, 10)
+
+[sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_7wc1g"]
+parameter_name = "Normal"
+texture_type = 2
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_4mgnf"]
+parameter_name = "Normal_Intensity"
+hint = 1
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeTextureParameterTriplanar" id="VisualShaderNodeTextureParameterTriplanar_a3auc"]
+parameter_name = "Roughness"
+texture_repeat = 1
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_58ps2"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_xoeej"]
+parameter_name = "Rough_Mult"
+default_value_enabled = true
+default_value = 1.0
 
 [sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_bjwa5"]
 default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
@@ -41,7 +64,11 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 uniform vec4 Blacks : source_color = vec4(0.000000, 0.000000, 0.000000, 1.000000);
 uniform vec4 Whites : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
 uniform vec3 UVW_Scale = vec3(10.000000, 10.000000, 10.000000);
-uniform sampler2D TextureParameterTriplanar : repeat_enable;
+uniform sampler2D Albedo : repeat_enable;
+uniform sampler2D Roughness : repeat_enable;
+uniform float Rough_Mult = 1;
+uniform sampler2D Normal : hint_normal, repeat_enable;
+uniform float Normal_Intensity : hint_range(0, 1) = 1;
 
 
 // TextureParameterTriplanar
@@ -100,20 +127,43 @@ void fragment() {
 
 
 // TextureParameterTriplanar:10
-	vec4 n_out10p0 = triplanar_texture(TextureParameterTriplanar, triplanar_power_normal, n_out15p0);
+	vec4 n_out10p0 = triplanar_texture(Albedo, triplanar_power_normal, n_out15p0);
 
 
 // Mix:7
 	vec3 n_out7p0 = mix(vec3(n_out8p0.xyz), vec3(n_out9p0.xyz), vec3(n_out10p0.xyz));
 
 
+// TextureParameterTriplanar:19
+	vec4 n_out19p0 = triplanar_texture(Roughness, triplanar_power_normal, n_out15p0);
+
+
+// FloatParameter:21
+	float n_out21p0 = Rough_Mult;
+
+
+// FloatOp:20
+	float n_out20p0 = n_out19p0.x * n_out21p0;
+
+
+// TextureParameterTriplanar:17
+	vec4 n_out17p0 = triplanar_texture(Normal, triplanar_power_normal, n_out15p0);
+
+
+// FloatParameter:18
+	float n_out18p0 = Normal_Intensity;
+
+
 // Output:0
 	ALBEDO = n_out7p0;
+	ROUGHNESS = n_out20p0;
+	NORMAL_MAP = vec3(n_out17p0.xyz);
+	NORMAL_MAP_DEPTH = n_out18p0;
 
 
 }
 "
-graph_offset = Vector2(-947.86, 209.187)
+graph_offset = Vector2(-765.947, 775.889)
 nodes/fragment/7/node = SubResource("VisualShaderNodeMix_bjwa5")
 nodes/fragment/7/position = Vector2(-80, 100)
 nodes/fragment/8/node = SubResource("VisualShaderNodeColorParameter_wde7c")
@@ -132,4 +182,14 @@ nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_kfil6")
 nodes/fragment/15/position = Vector2(-1060, 640)
 nodes/fragment/16/node = SubResource("VisualShaderNodeVec3Parameter_3onx6")
 nodes/fragment/16/position = Vector2(-1760, 980)
-nodes/fragment/connections = PackedInt32Array(7, 0, 0, 0, 8, 0, 7, 0, 9, 0, 7, 1, 10, 0, 7, 2, 12, 0, 14, 0, 11, 0, 14, 1, 14, 0, 15, 0, 15, 0, 10, 1, 16, 0, 15, 1)
+nodes/fragment/17/node = SubResource("VisualShaderNodeTextureParameterTriplanar_7wc1g")
+nodes/fragment/17/position = Vector2(-760, 920)
+nodes/fragment/18/node = SubResource("VisualShaderNodeFloatParameter_4mgnf")
+nodes/fragment/18/position = Vector2(40, 1280)
+nodes/fragment/19/node = SubResource("VisualShaderNodeTextureParameterTriplanar_a3auc")
+nodes/fragment/19/position = Vector2(-761.25, 1460.99)
+nodes/fragment/20/node = SubResource("VisualShaderNodeFloatOp_58ps2")
+nodes/fragment/20/position = Vector2(-200, 1440)
+nodes/fragment/21/node = SubResource("VisualShaderNodeFloatParameter_xoeej")
+nodes/fragment/21/position = Vector2(-140, 1860)
+nodes/fragment/connections = PackedInt32Array(7, 0, 0, 0, 8, 0, 7, 0, 9, 0, 7, 1, 10, 0, 7, 2, 12, 0, 14, 0, 11, 0, 14, 1, 14, 0, 15, 0, 15, 0, 10, 1, 16, 0, 15, 1, 15, 0, 17, 1, 17, 0, 0, 9, 18, 0, 0, 10, 15, 0, 19, 1, 19, 0, 20, 0, 21, 0, 20, 1, 20, 0, 0, 3)

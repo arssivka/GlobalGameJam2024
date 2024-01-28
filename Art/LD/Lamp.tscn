@@ -7,6 +7,7 @@
 
 [node name="Lamp" type="Node3D"]
 script = ExtResource("1_ek1ro")
+LampColor = Color(0.886275, 0.313726, 0.101961, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -15,4 +16,6 @@ surface_material_override/0 = ExtResource("1_25oxn")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.886275, 0.247059, 0.12549, 1)
+light_bake_mode = 1
+shadow_enabled = true
 omni_range = 6.10383
