@@ -616,13 +616,13 @@ transform = Transform3D(-0.723355, 0, 0.690476, 0, 1, 0, -0.690476, 0, -0.723355
 curve = SubResource("Curve3D_5ai52")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Enemy_4_Path"]
-transform = Transform3D(0.999927, -9.65131e-06, -0.0121225, 0, 1, -0.000796147, 0.0121225, 0.000796088, 0.999926, -24.9423, -0.0298767, 25.5247)
+transform = Transform3D(0.999927, -9.65131e-06, -0.0121225, 0, 1, -0.000796147, 0.0121225, 0.000796089, 0.999926, -24.9423, -0.0298767, 25.5247)
 
 [node name="Enemy_5_Path" type="Path3D" parent="Enemies"]
 curve = SubResource("Curve3D_t8uxp")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Enemies/Enemy_5_Path"]
-transform = Transform3D(-0.351297, -0.000285919, 0.936264, 0, 1, 0.000305383, -0.936264, 0.00010728, -0.351297, -15.5071, 0.0194511, -37.2626)
+transform = Transform3D(-0.351297, -0.000285919, 0.936264, 0, 1, 0.000305383, -0.936264, 0.00010728, -0.351296, -15.5071, 0.0194511, -37.2626)
 
 [node name="Enemy_6_Path" type="Path3D" parent="Enemies"]
 curve = SubResource("Curve3D_cet8b")

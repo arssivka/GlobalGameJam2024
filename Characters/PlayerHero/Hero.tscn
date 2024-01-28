@@ -70,5 +70,14 @@ spot_range = 11.835
 spot_angle = 50.74
 spot_angle_attenuation = 3.03143
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="body_entered" from="HitArea" to="." method="OnHitAreaBodyEntered"]
 [connection signal="body_exited" from="HitArea" to="." method="OnHitAreaBodyExited"]
+[connection signal="timeout" from="DashTimer" to="." method="OnDashTimeout"]
+[connection signal="timeout" from="CooldownTimer" to="." method="OnColldownTimer"]
