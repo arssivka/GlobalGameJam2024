@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6hun0cyssk3m"]
+[gd_scene load_steps=17 format=3 uid="uid://b6hun0cyssk3m"]
 
 [ext_resource type="Script" path="res://Characters/Patient/Patient.cs" id="1_7gk5t"]
 [ext_resource type="AudioStream" uid="uid://j0te07r8f75t" path="res://Art/Sounds/Laughter_Long.wav" id="2_58e1q"]
@@ -20,7 +20,8 @@ size = Vector3(0.2, 1, 0.2)
 viewport_path = NodePath("ProgressBar/SubViewport")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lh78"]
-direction = Vector3(0, 1, 0)
+direction = Vector3(0, 1, 1)
+spread = 20.0
 initial_velocity_min = 2.0
 initial_velocity_max = 4.0
 
@@ -29,8 +30,14 @@ albedo_color = Color(0.435294, 0.701961, 0.811765, 0.658824)
 
 [sub_resource type="SphereMesh" id="SphereMesh_rd1qx"]
 material = SubResource("StandardMaterial3D_wll6j")
-radius = 0.1
-height = 0.2
+radius = 0.05
+height = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8i8rm"]
+direction = Vector3(0, 1, -1)
+spread = 20.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
 
 [node name="Patient" type="StaticBody3D"]
 script = ExtResource("1_7gk5t")
@@ -100,8 +107,15 @@ texture = SubResource("ViewportTexture_x2tdh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.835067, 1.72346, 0)
 
 [node name="Tears" type="GPUParticles3D" parent="ParticlesPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0926535, -0.408173, 0.337111)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_6lh78")
+draw_pass_1 = SubResource("SphereMesh_rd1qx")
+
+[node name="Tears2" type="GPUParticles3D" parent="ParticlesPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0926535, -0.408173, -0.225797)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_8i8rm")
 draw_pass_1 = SubResource("SphereMesh_rd1qx")
 
 [connection signal="body_entered" from="Area3D" to="." method="OnBodyTickingZoneEntered"]
