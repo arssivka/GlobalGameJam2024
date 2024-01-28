@@ -286,6 +286,7 @@ RoutePath = NodePath("../Enemy_3_Path/PathFollow3D")
 [node name="EnemySpawner" parent="Enemies" instance=ExtResource("8_fjxf1")]
 MinSpawnDistance = 5.0
 RoutesNodePath = NodePath("..")
+SpawnPointsNodePath = NodePath("../SpawnPoints")
 EnemyScene = ExtResource("5_cfar2")
 
 [node name="SpawnPoints" type="Node3D" parent="Enemies"]
