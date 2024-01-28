@@ -443,34 +443,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7539, 2.81803, 11.0948)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43726, 2.81803, 9.26872)
 
 [node name="Lamp18" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.43726, 2.81803, -1.23646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.78082, 2.81803, -1.23646)
+IsBlue = true
 
 [node name="Lamp34" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0989, 2.81803, -12.0928)
-
-[node name="Lamp35" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0033, 2.81803, -12.0928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9786, 2.81803, -12.0928)
+IsBlue = true
 
 [node name="Lamp50" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0033, 2.81803, -13.7071)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9186, 2.81803, -13.7071)
+IsBlue = true
 
 [node name="Lamp51" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.365, 2.81803, -13.7071)
+IsBlue = true
 
 [node name="Lamp53" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34777, 2.81803, -16.825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24325, 2.81803, -20.8358)
+IsBlue = true
+
+[node name="Lamp68" parent="Lighting" instance=ExtResource("6_hee7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24325, 2.81803, -27.0219)
+
+[node name="Lamp69" parent="Lighting" instance=ExtResource("6_hee7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.48394, 2.81803, -33.7343)
 
 [node name="Lamp54" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34777, 2.81803, -24.4484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.3956, 2.81803, -35.6139)
+IsBlue = true
 
 [node name="Lamp55" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04955, 2.81803, -24.4484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.82549, 2.81803, -21.0545)
 
 [node name="Lamp56" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04955, 2.81803, -31.8663)
-
-[node name="Lamp52" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8983, 2.81803, -13.7071)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.01997, 2.81803, -33.9474)
 
 [node name="Lamp49" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1626, 2.81803, -27.0281)
@@ -479,10 +485,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.1626, 2.81803, -27.0281)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9924, 2.81803, -35.6431)
 
 [node name="Lamp36" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0313, 2.81803, -12.0928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.1869, 2.81803, -12.0928)
+IsBlue = true
 
 [node name="Lamp48" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0313, 2.81803, -27.0078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4998, 2.81803, -27.0078)
 
 [node name="Lamp57" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.5231, 2.81803, -26.7031)
@@ -497,55 +504,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3479, 2.81803, -15.8276)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.3479, 2.81803, -25.2679)
 
 [node name="Lamp61" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.5812, 2.81803, -25.2679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.9833, 2.81803, -25.9134)
+IsBlue = true
 
 [node name="Lamp62" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1131, 2.81803, -15.7276)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1131, 2.81803, -14.7464)
+IsBlue = true
 
 [node name="Lamp63" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9908, 2.81803, -19.3397)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.5787, 2.81803, -19.3397)
 
 [node name="Lamp64" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9908, 2.81803, -34.2636)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9908, 2.81803, -35.6439)
 
 [node name="Lamp65" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9908, 2.81803, -7.56484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.7393, 2.81803, -7.56484)
 
 [node name="Lamp66" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9908, 2.81803, -5.71385)
 
 [node name="Lamp22" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52404, 2.81803, -8.37803)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80754, 2.81803, -12.1449)
+IsBlue = true
 
 [node name="Lamp37" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -10.7395)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -12.8994)
+IsBlue = true
 
 [node name="Lamp38" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -18.119)
-
-[node name="Lamp39" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -24.6227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -20.187)
+IsBlue = true
 
 [node name="Lamp40" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.8193, 2.81803, -32.1752)
+IsBlue = true
 
 [node name="Lamp41" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.58851, 2.81803, -22.319)
-
-[node name="Lamp42" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.58851, 2.81803, -30.1527)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.58851, 2.81803, -24.232)
+IsBlue = true
 
 [node name="Lamp43" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466762, 2.81803, -26.3612)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.711444, 2.81803, -27.072)
 
 [node name="Lamp44" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.466762, 2.81803, -18.0246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.81292, 2.81803, -15.0736)
 
 [node name="Lamp23" parent="Lighting" instance=ExtResource("6_hee7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5242, 2.81803, -6.22987)
 
 [node name="Lamp24" parent="Lighting" instance=ExtResource("6_hee7b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.18479, 2.81803, 7.80091)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.61939, 2.81803, 7.80091)
 IsBlue = true
 
 [node name="Lamp19" parent="Lighting" instance=ExtResource("6_hee7b")]
