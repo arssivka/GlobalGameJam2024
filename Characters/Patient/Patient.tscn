@@ -105,16 +105,15 @@ texture = SubResource("ViewportTexture_x2tdh")
 
 [node name="ParticlesPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.835067, 1.72346, 0)
+visible = false
 
 [node name="Tears" type="GPUParticles3D" parent="ParticlesPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0926535, -0.408173, 0.337111)
-emitting = false
 process_material = SubResource("ParticleProcessMaterial_6lh78")
 draw_pass_1 = SubResource("SphereMesh_rd1qx")
 
 [node name="Tears2" type="GPUParticles3D" parent="ParticlesPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0926535, -0.408173, -0.225797)
-emitting = false
 process_material = SubResource("ParticleProcessMaterial_8i8rm")
 draw_pass_1 = SubResource("SphereMesh_rd1qx")
 
