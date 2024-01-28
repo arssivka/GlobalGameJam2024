@@ -12,6 +12,8 @@ public partial class Hero : CharacterBody3D
 	[Export]
 	public const float Speed = 500.0f;
 	[Export]
+	public const float DashSpeed = 2000.0f;
+	[Export]
 	public const float JumpVelocity = 4f;
 	[Export]
 	public const float Gravity = 10f;
@@ -34,6 +36,8 @@ public partial class Hero : CharacterBody3D
 	private PauseMenu PauseMenu = null;
 	private int ScoreCount = 0;
 	private GameState GlobalState = null;
+	private bool dashEnabled = false;
+	private bool dashCooldown = false;
 
 	public void StartTickling(Node3D body)
 	{
@@ -203,6 +207,18 @@ public partial class Hero : CharacterBody3D
 		{
 			MoveDirection.X = 0;			
 		}
+		
+		if (Input.IsActionPressed("Dash") && !dashCooldown && GlobalState.SCORE > 0)
+		{
+			ScoreCount -= 1;
+			GlobalState.SCORE -= 1;
+			PlayerHud.OnScoreCountChanged(ScoreCount);
+			
+			dashEnabled = true;
+			dashCooldown = true;
+			GetNode<Timer>("DashTimer").Start();
+			GetNode<Timer>("CooldownTimer").Start();
+		}
 
 		MoveDirection = MoveDirection.Normalized();
 	}
@@ -216,7 +232,8 @@ public partial class Hero : CharacterBody3D
 		UpdateMovementMeshes(delta);
 		UpdateDirection();
 		UpdateJumping(delta);
-		Vector3 moveVelocity = MoveDirection * Speed * (float)delta;
+		var speed = (dashEnabled) ? DashSpeed : Speed;
+		Vector3 moveVelocity = MoveDirection * speed * (float)delta;
 		Velocity = moveVelocity;
 		MoveAndSlide();
 	}
@@ -228,5 +245,15 @@ public partial class Hero : CharacterBody3D
 	
 	private void OnHitAreaBodyExited(Node3D body)
 	{
+	}
+
+	private void OnDashTimeout()
+	{
+		dashEnabled = false;
+	}
+
+	private void OnColldownTimer()
+	{
+		dashCooldown = false;
 	}
 }
