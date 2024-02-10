@@ -1,8 +1,8 @@
 using Godot;
-using System;
 
 public partial class PauseMenu : Control
 {
+    private NodePath ResumeButtonPath = "Control/ResumeButton";
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -27,6 +27,7 @@ public partial class PauseMenu : Control
 		{
 			GetTree().Paused = true;
 			this.Show();
+            GetNode<Button>(ResumeButtonPath).CallDeferred("grab_focus");
 		}
 		else
 		{

@@ -20,6 +20,7 @@ public partial class Highscores : Control
 			ScoreInstance.Init(i+1, GlobalState.Highscore[i]);
 			ScoresContainer.AddChild(ScoreInstance);
 		}
+        GetNode<Button>("MenuButton").CallDeferred("grab_focus");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
