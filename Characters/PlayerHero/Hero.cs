@@ -38,6 +38,8 @@ public partial class Hero : CharacterBody3D
 	private GameState GlobalState = null;
 	private bool dashEnabled = false;
 	private bool dashCooldown = false;
+	private int NumPatients = 0;
+	private int NumTicledPatients = 0;
 
 	public void StartTickling(Node3D body)
 	{
@@ -58,6 +60,7 @@ public partial class Hero : CharacterBody3D
 		ScoreCount += scores;
 		GlobalState.SCORE = ScoreCount;
 		PlayerHud.OnScoreCountChanged(ScoreCount);
+		NumTicledPatients++;
 	}
 
 	private void ChangeState(State newState)
@@ -172,14 +175,21 @@ public partial class Hero : CharacterBody3D
 		GlobalState = GetNode<GameState>("/root/GameState");
 		GlobalState.SCORE = 0;
 		ScoreCount = 0;
+
+		var patientsRoot = GetTree().CurrentScene.FindChild("Patients");
+		if (patientsRoot != null)
+		{
+			NumPatients = patientsRoot.GetChildCount();
+		}
 	}
 
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
 
-		if (Input.IsActionPressed("WinGameDebug"))
+		if (NumTicledPatients == NumPatients)
 		{
+			GD.Print("Player ticled all patients, emitting AllPatientsTicled signal");
 			GlobalState.EmitSignal(GameState.SignalName.AllPatientsTickled);
 		}
 	}
@@ -245,10 +255,6 @@ public partial class Hero : CharacterBody3D
 	private void OnHitAreaBodyEntered(Node3D body)
 	{
 		GetTree().ChangeSceneToFile("res://UI/GameOver.tscn");
-	}
-	
-	private void OnHitAreaBodyExited(Node3D body)
-	{
 	}
 
 	private void OnDashTimeout()

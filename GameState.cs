@@ -11,6 +11,7 @@ public partial class GameState : Node
 	
 	[Signal]
 	public delegate void AllPatientsTickledEventHandler();
+
 	public void SaveResult()
 	{
 		using var saveGame = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);
