@@ -28,6 +28,8 @@ public partial class Patient : StaticBody3D
 	
 	private Hero TicklingHero;
 	private GameState GlobalState = null;
+	private Node3D TearsPivot = null;
+	private TextureProgressBar ProgressBar = null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -36,6 +38,9 @@ public partial class Patient : StaticBody3D
 		LaughMesh = GetNode<Node3D>("Pivot/Dude_Laugh");
 		HihiPlayer = GetNode<AudioStreamPlayer3D>("HihiPlayer");
 		HysteriaPlayer = GetNode<AudioStreamPlayer3D>("HysteriaPlayer");
+		TearsPivot = GetNode<Node3D>("ParticlesPivot");
+		const string path = "ProgressBar/SubViewport/TextureProgressBar";
+		ProgressBar = GetNode<TextureProgressBar>(path);
 
 		TickledMesh.Hide();
 		LaughMesh.Hide();
@@ -56,13 +61,10 @@ public partial class Patient : StaticBody3D
 				TicklingTime += (float)delta;
 				if (TicklingTime >= TicklingTimeLimit)
 				{
-					OnStateSchanged(State.Laugh);
+					OnStateChanged(State.Laugh);
 					TicklingHero.OnTicklingSucceed(BaseScoreCounnt);
 				}
-				else
-				{
-					// paste update visual ticking progress here
-				}
+				UpdateProgressBar();
 			}
 			else
 			{
@@ -81,8 +83,6 @@ public partial class Patient : StaticBody3D
 				HysteriaPlayer.VolumeDb = 0;
 			}
 		}
-
-		UpdateProgressBar();
 	}
 
 	private void OnBodyTickingZoneEntered(Node3D body)
@@ -94,7 +94,7 @@ public partial class Patient : StaticBody3D
 		TicklingHero = body as Hero;
 		if (TicklingHero != null)
 		{
-			OnStateSchanged(State.Tickled);
+			OnStateChanged(State.Tickled);
 			TicklingHero.StartTickling(this);
 		}
 	}
@@ -109,7 +109,7 @@ public partial class Patient : StaticBody3D
 		TicklingHero = null;
 	}
 
-	private void OnStateSchanged(State newState)
+	private void OnStateChanged(State newState)
 	{
 		if (CurrentState == newState)
 		{
@@ -124,11 +124,12 @@ public partial class Patient : StaticBody3D
 			LaughMesh.Show();
 			HihiPlayer.Stop();
 			HysteriaPlayer.Play();
-			if (!_enemySpawned && GetNode<GameState>("/root/GameState").EnemySpawner is not null)
+			if (!_enemySpawned && GlobalState.EnemySpawner is not null)
 			{
 				_enemySpawned = true;
-				GetNode<GameState>("/root/GameState").EnemySpawner.SpawnEnemy(Position);
+				GlobalState.EnemySpawner.SpawnEnemy(Position);
 			}
+			TearsPivot.Show();
 		}
 		else if (newState == State.Tickled)
 		{
@@ -145,6 +146,7 @@ public partial class Patient : StaticBody3D
 			LaughMesh.Hide();
 			HihiPlayer.Stop();
 			HysteriaPlayer.Stop();
+			TearsPivot.Hide();
 		}
 	}
 
@@ -164,30 +166,29 @@ public partial class Patient : StaticBody3D
 
 	private void UpdateProgressBar()
 	{
-		const string path = "ProgressBar/SubViewport/TextureProgressBar";
-		var progressBar = GetNode<TextureProgressBar>(path);
-
 		switch (CurrentState)
 		{
 			case State.Idle:
-				progressBar.Visible = false;
+				ProgressBar.Visible = false;
 				break;
 			case State.Tickled:
-				progressBar.Value = TicklingTime / TicklingTimeLimit * 100;
-				progressBar.Visible = true;
+				ProgressBar.Value = TicklingTime / TicklingTimeLimit * 100;
+				ProgressBar.Visible = true;
 				break;
 			case State.Laugh:
-				progressBar.Value = 100;
-				progressBar.Visible = true;
-				progressBar.TintProgress = new Color(0.858824f, 0.0196078f, 0.207843f, 1f);
-				GetNode<Node3D>("ParticlesPivot").Visible = true;
+				ProgressBar.Value = 100;
+				ProgressBar.Visible = true;
+				ProgressBar.TintProgress = new Color(0.858824f, 0.0196078f, 0.207843f, 1f);
 				break;
 		}
 	}
 
 	public void ResetState()
 	{
-		CurrentState = State.Idle;
-		GD.Print("Patient " + this + " has received ResetState signal");
+		OnStateChanged(State.Idle);
+		ProgressBar.Hide();
+		ProgressBar.TintProgress = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+		ProgressBar.Value = 0;
+		TicklingTime = 0;
 	}
 }

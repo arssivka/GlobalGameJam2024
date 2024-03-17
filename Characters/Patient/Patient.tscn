@@ -93,9 +93,9 @@ transparent_bg = true
 size = Vector2i(248, 40)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar/SubViewport"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
-value = 44.0
 texture_under = ExtResource("8_8o5gu")
 texture_progress = ExtResource("9_n2g6y")
 

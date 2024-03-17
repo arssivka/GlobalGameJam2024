@@ -180,8 +180,7 @@ public partial class Hero : CharacterBody3D
 
 		if (Input.IsActionPressed("WinGameDebug"))
 		{
-			GD.Print("Emitting AllPatientsTickled");
-			EmitSignal(GameState.SignalName.AllPatientsTickled);
+			GlobalState.EmitSignal(GameState.SignalName.AllPatientsTickled);
 		}
 	}
 
