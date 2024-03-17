@@ -9,6 +9,8 @@ public partial class GameState : Node
 	public List<int> Highscore = new List<int>();
 	public EnemySpawner EnemySpawner;
 	
+	[Signal]
+	public delegate void AllPatientsTickledEventHandler();
 	public void SaveResult()
 	{
 		using var saveGame = FileAccess.Open("user://savegame.save", FileAccess.ModeFlags.Write);

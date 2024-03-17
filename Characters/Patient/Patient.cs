@@ -27,6 +27,7 @@ public partial class Patient : StaticBody3D
 	private AudioStreamPlayer3D HysteriaPlayer = null;
 	
 	private Hero TicklingHero;
+	private GameState GlobalState = null;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -38,6 +39,10 @@ public partial class Patient : StaticBody3D
 
 		TickledMesh.Hide();
 		LaughMesh.Hide();
+
+		GlobalState = GetNode<GameState>("/root/GameState");
+		// Listen for AllPatientsTickled event and reset state when all patients are tickled
+		GlobalState.AllPatientsTickled += ResetState;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -178,5 +183,11 @@ public partial class Patient : StaticBody3D
 				GetNode<Node3D>("ParticlesPivot").Visible = true;
 				break;
 		}
+	}
+
+	public void ResetState()
+	{
+		CurrentState = State.Idle;
+		GD.Print("Patient " + this + " has received ResetState signal");
 	}
 }

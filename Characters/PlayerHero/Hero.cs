@@ -178,6 +178,11 @@ public partial class Hero : CharacterBody3D
 	{
 		base._Process(delta);
 
+		if (Input.IsActionPressed("WinGameDebug"))
+		{
+			GD.Print("Emitting AllPatientsTickled");
+			EmitSignal(GameState.SignalName.AllPatientsTickled);
+		}
 	}
 
 	private void ListenInput()
