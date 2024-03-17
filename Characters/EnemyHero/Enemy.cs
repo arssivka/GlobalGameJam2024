@@ -46,12 +46,6 @@ public partial class Enemy : CharacterBody3D
 	public override void _Process(double delta)
 	{
 		base._Process(delta);
-
-		if (Input.IsActionJustReleased("ShowExclamationMark"))
-		{
-			var exclamationMark = GetNode<Node3D>(_exclamationMarkPath);
-			exclamationMark.Visible = !exclamationMark.Visible;
-		}
 		
 		if (!_navigationLocked && _playerNode is not null && MovementTarget != _playerNode!.Position)
 		{
